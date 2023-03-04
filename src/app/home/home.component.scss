@@ -1,5 +1,32 @@
+#image-container{
+    position: relative;
+}
+
 #cover {
     width: 100%;
     height: 400px;
     object-fit: cover;
+    opacity: 0.6;
+}
+
+#title1 {
+    margin: unset;
+    position: absolute;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+span {
+    display: flex;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    gap: 10px;
+}
+
+.cover-button {
+    margin: 5px;
 }
