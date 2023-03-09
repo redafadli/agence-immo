@@ -1,0 +1,21 @@
+.carousel-inner {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  
+  .carousel-item {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .carousel-item img {
+    height: auto;
+    width: 100%;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .carousel-item {
+      flex: 0 0 33.333333%;
+      max-width: 33.333333%;
+    }
+  }

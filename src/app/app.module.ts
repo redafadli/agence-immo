@@ -6,16 +6,19 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { MatIconModule } from '@angular/material/icon';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { ItemsCarouselComponent } from './items-carousel/items-carousel.component';
 
 @NgModule({
   declarations: [
     AppComponent,    
-    HomeComponent, NavigationBarComponent,
+    HomeComponent, NavigationBarComponent, ItemsCarouselComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatIconModule
+    MatIconModule,
+    CarouselModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

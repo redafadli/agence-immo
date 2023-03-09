@@ -1,0 +1,10 @@
+<carousel>
+    <slide *ngFor="let item of items">
+      <img src="{{item.image}}" alt="{{item.name}}">
+      <div class="carousel-caption">
+        <h3>{{item.name}}</h3>
+        <p>{{item.description}}</p>
+        <button class="btn btn-primary" (click)="onButtonClick(item)">Button</button>
+      </div>
+    </slide>
+  </carousel>
