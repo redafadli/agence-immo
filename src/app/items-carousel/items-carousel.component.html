@@ -1,10 +1,6 @@
-<carousel>
-    <slide *ngFor="let item of items">
-      <img src="{{item.image}}" alt="{{item.name}}">
-      <div class="carousel-caption">
-        <h3>{{item.name}}</h3>
-        <p>{{item.description}}</p>
-        <button class="btn btn-primary" (click)="onButtonClick(item)">Button</button>
-      </div>
-    </slide>
-  </carousel>
+<ngx-slick-carousel class="carousel" [config]="carouselConfig">
+    <div *ngFor="let slide of slides">
+      <img src="{{ slide.imageUrl }}" alt="{{ slide.title }}">
+      <h3>{{ slide.title }}</h3>
+    </div>
+  </ngx-slick-carousel>

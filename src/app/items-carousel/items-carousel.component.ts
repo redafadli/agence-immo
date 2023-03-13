@@ -7,21 +7,16 @@ import { Component } from '@angular/core';
 })
 export class ItemsCarouselComponent {
 
-  onButtonClick(item: any) {
-    console.log(item);
-  }
+  carouselConfig = {
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  };
 
-  items = [
-    {
-      name: 'Item 1',
-      description: 'Description of Item 1',
-      image: 'https://via.placeholder.com/800x400?text=Item%201'
-    },
-    {
-      name: 'Item 2',
-      description: 'Description of Item 2',
-      image: 'https://via.placeholder.com/800x400?text=Item%202'
-    }
-  ]
-
+  slides = [
+    { title: 'Slide 1', imageUrl: 'https://picsum.photos/250/200' },
+    { title: 'Slide 2', imageUrl: 'https://picsum.photos/250/200' }
+  ];
 }

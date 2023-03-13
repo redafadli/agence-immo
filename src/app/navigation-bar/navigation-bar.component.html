@@ -1,4 +1,15 @@
 <div class="container">
-    <mat-icon id="menu-icon">menu</mat-icon>
+
+    <button id="menu-button" mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+        <ng-template matMenuContent>
+            <button mat-menu-item (click)="displayAccueil()">Accueil</button>
+            <button mat-menu-item (click)="displayApropos()">À propos</button>
+        </ng-template>
+    </mat-menu>
+
     <img src="../assets/images/logo.png" class="logo">
 </div>
