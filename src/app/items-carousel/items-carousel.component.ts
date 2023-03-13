@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ScrollSnapAutoplay, ScrollSnapLoop, ScrollSnapSlider } from 'scroll-snap-slider'
 
 @Component({
   selector: 'app-items-carousel',
@@ -7,16 +8,9 @@ import { Component } from '@angular/core';
 })
 export class ItemsCarouselComponent {
 
-  carouselConfig = {
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: true,
-    autoplay: true,
-    autoplaySpeed: 3000,
-  };
+  constructor() {}
 
-  slides = [
-    { title: 'Slide 1', imageUrl: 'https://picsum.photos/250/200' },
-    { title: 'Slide 2', imageUrl: 'https://picsum.photos/250/200' }
-  ];
+  ngOnInit() {
+  }
+
 }
