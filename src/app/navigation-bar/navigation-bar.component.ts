@@ -16,6 +16,10 @@ export class NavigationBarComponent {
     this.router.navigate(['/accueil']);
   }
 
+  displayContact() {
+    this.router.navigate(['/contact']);
+  }
+
   displayApropos() {
     this.router.navigate(['/apropos']);
   }

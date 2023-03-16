@@ -27,3 +27,7 @@
     background-color: unset;
     border: unset;
 }
+
+::ng-deep .menu-item button {
+    height: 20px;
+}
