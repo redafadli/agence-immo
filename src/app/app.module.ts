@@ -13,11 +13,14 @@ import { FooterComponent } from './footer/footer.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { ContactComponent } from './contact/contact.component';
+import { AboutComponent } from './about/about.component';
+import { ListingsComponent } from './listings/listings.component';
+import { ListingPageComponent } from './listing-page/listing-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,    
-    HomeComponent, NavigationBarComponent, ItemsCarouselComponent, FooterComponent, AdminDashboardComponent, ContactComponent,
+    HomeComponent, NavigationBarComponent, ItemsCarouselComponent, FooterComponent, AdminDashboardComponent, ContactComponent, AboutComponent, ListingsComponent, ListingPageComponent,
   ],
   imports: [
     BrowserModule,

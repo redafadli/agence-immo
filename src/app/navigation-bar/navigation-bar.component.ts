@@ -23,4 +23,8 @@ export class NavigationBarComponent {
   displayApropos() {
     this.router.navigate(['/apropos']);
   }
+
+  displayListings() {
+    this.router.navigate(['/listings']);
+  }
 }
