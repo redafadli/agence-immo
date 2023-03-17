@@ -1,7 +1,9 @@
 <ul>
     <li *ngFor="let listing of listings">
-        <img src="{{ listing.image }}">
-        <h3> {{listing.title}}</h3>
+        <a routerLink="/detail/{{listing.id}}">
+            <img class="image" src="{{listing.image }}">
+            <span> {{listing.title}}</span>
+        </a>
     </li>
 </ul>
 <app-footer></app-footer>

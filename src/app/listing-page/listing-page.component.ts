@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ListingService } from 'src/services/listing.service';
+import { Listing } from '../listing';
 
 @Component({
   selector: 'app-listing-page',
@@ -7,4 +10,19 @@ import { Component } from '@angular/core';
 })
 export class ListingPageComponent {
 
+  constructor(
+    private route : ActivatedRoute,
+    private listingService: ListingService
+  ){}
+
+  @Input() listing? : Listing;
+
+  ngOnInit() : void {
+    this.getListing();
+  }
+
+  getListing() : void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.listingService.getHero(id).subscribe(hero => this.listing = hero);
+  }
 }

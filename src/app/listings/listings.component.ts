@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ListingService } from 'src/services/listing.service';
 import { Listing } from '../listing';
 
 @Component({
@@ -8,6 +9,17 @@ import { Listing } from '../listing';
 })
 export class ListingsComponent {
 
-  listings : Listing[] = [];
+  listings: Listing[] = [];
+
+  constructor(private listingService: ListingService) { }
+
+  ngOnInit(): void {
+    this.getListings();
+  }
+
+  getListings(): void {
+    this.listingService.getListings()
+      .subscribe(listings => this.listings = listings);
+  }
 
 }
