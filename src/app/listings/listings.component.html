@@ -1,8 +1,11 @@
 <ul>
     <li *ngFor="let listing of listings">
-        <a routerLink="/detail/{{listing.id}}">
+        <a class="item" routerLink="/detail/{{listing.id}}">
             <img class="image" src="{{listing.image }}">
-            <span> {{listing.title}}</span>
+            <span class="infos">
+                <span class="title"> {{listing.title}}</span>
+                <span class="price">{{listing.price}}</span>
+            </span>
         </a>
     </li>
 </ul>

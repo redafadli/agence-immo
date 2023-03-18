@@ -1,4 +1,24 @@
 .image {
-  width: auto;
-  height: 200px;
+  width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+  border: 1px;
+  border-style: solid;
+  border-color: var(--main-color);
 }
