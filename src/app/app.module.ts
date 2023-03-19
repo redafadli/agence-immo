@@ -16,6 +16,8 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { ListingsComponent } from './listings/listings.component';
 import { ListingPageComponent } from './listing-page/listing-page.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { ListingPageComponent } from './listing-page/listing-page.component';
     MatMenuModule,
     BrowserAnimationsModule,
     SlickCarouselModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

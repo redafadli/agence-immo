@@ -3,4 +3,5 @@ export interface Listing {
     image: string;
     title: string;
     price : number;
+    city : string;
 }

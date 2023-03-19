@@ -1,12 +1,15 @@
-<ul>
-    <li *ngFor="let listing of listings">
-        <a class="item" routerLink="/detail/{{listing.id}}">
-            <img class="image" src="{{listing.image }}">
-            <span class="infos">
-                <span class="title"> {{listing.title}}</span>
-                <span class="price">{{listing.price}}</span>
-            </span>
-        </a>
-    </li>
-</ul>
+<mat-grid-list class="grid" cols="3" rowHeight="3:2">
+    <mat-grid-tile *ngFor="let listing of listings">
+        <div>
+            <a class="item" routerLink="/detail/{{listing.id}}">
+                <img class="image" src="{{listing.image }}">
+                <span class="infos">
+                    <span class="title"> {{listing.title}}</span>
+                    <span class="price">{{listing.price}}</span>
+                    <span class="city">{{listing.city}}</span>
+                </span>
+            </a>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
 <app-footer></app-footer>
