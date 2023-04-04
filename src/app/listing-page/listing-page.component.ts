@@ -12,7 +12,7 @@ export class ListingPageComponent {
 
   constructor(
     private route : ActivatedRoute,
-    private listingService: ListingService
+    private listingService: ListingService,
   ){}
 
   @Input() listing? : Listing;
@@ -23,6 +23,6 @@ export class ListingPageComponent {
 
   getListing() : void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.listingService.getHero(id).subscribe(hero => this.listing = hero);
+    this.listingService.getListing(id).subscribe(listing => this.listing = listing);
   }
 }

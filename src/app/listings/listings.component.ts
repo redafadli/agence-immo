@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ListingService } from 'src/services/listing.service';
 import { Listing } from '../listing';
 
@@ -9,7 +10,7 @@ import { Listing } from '../listing';
 })
 export class ListingsComponent {
 
-  listings: Listing[] = [];
+  public listings: Listing[] = [];
 
   constructor(private listingService: ListingService) { }
 
@@ -21,5 +22,4 @@ export class ListingsComponent {
     this.listingService.getListings()
       .subscribe(listings => this.listings = listings);
   }
-
 }

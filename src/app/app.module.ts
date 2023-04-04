@@ -17,6 +17,7 @@ import { AboutComponent } from './about/about.component';
 import { ListingsComponent } from './listings/listings.component';
 import { ListingPageComponent } from './listing-page/listing-page.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     BrowserAnimationsModule,
     SlickCarouselModule,
     MatGridListModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
