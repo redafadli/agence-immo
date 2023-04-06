@@ -11,18 +11,20 @@ import { Listing } from '../listing';
 export class ListingPageComponent {
 
   constructor(
-    private route : ActivatedRoute,
+    private route: ActivatedRoute,
     private listingService: ListingService,
-  ){}
+  ) { }
 
-  @Input() listing? : Listing;
+  @Input() listing?: Listing;
 
-  ngOnInit() : void {
+  ngOnInit(): void {
     this.getListing();
   }
 
-  getListing() : void {
+  getListing(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.listingService.getListing(id).subscribe(listing => this.listing = listing);
+    this.listingService.getListing(id)
+      .subscribe(listing =>
+        this.listing = listing);
   }
 }
