@@ -1,25 +1,42 @@
-mat-grid-list {
-  padding: 0px;
-}
-
 .item {
   display: flex;
   flex-direction: column;
-  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .image {
   width: 100%;
   height: auto;
 }
+
 .infos {
-  display: flex;
-  flex-direction: column;
+  position: relative;
   border: 1px;
   border-style: solid;
   border-color: var(--main-color);
 }
 
-@media screen and (min-width: 800px) {
+.title {
+  position: absolute;
+  top: -25px;
+  left: 20px;
+  color: white;
+}
+
+.price-city {
+  margin-top: 10px;
+}
+
+.price {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.city {
+  position: absolute;
+  font-size: 20px;
 
 }
+
+@media screen and (min-width: 800px) {}
