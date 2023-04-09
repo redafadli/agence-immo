@@ -1,5 +1,28 @@
-<div *ngIf="listing">
-    <h2> {{listing.title}}</h2>
-    <img [src]="listing.image">
-    <span> id : {{listing.id}}</span>
-</div>
+<main class="container">
+    <div *ngIf="listing">
+        <h1 class="name"> {{listing.title}}</h1>
+        <img class="image" [src]="listing.image">
+        <h3 class="price">{{listing.price}}€</h3>
+        <h3 class="city">{{listing.city}}</h3>
+    </div>
+    <div class="contact">
+        <p>Interessé par ce bien ? N'hesitez pas à nous contacter</p>
+        <button>Formulaire</button>
+    </div>
+    <div class="description-container">
+        <h1 class="title">Description</h1>
+        <p class="description">{{listing?.description}}</p>
+    </div>
+    <div class="address-container">
+        <h1 class="title">Adresse</h1>
+        <p class="address">{{listing?.address}}</p>
+    </div>
+    <div class="characs-container">
+        <h1 class="title">Caractéristiques</h1>
+        <p class="characs">Liste de caractéristiques</p>
+    </div>
+    <div class="form-container">
+        <h2 class="form-title">Voulez-vous visiter ce bien ou avoir plus d'informations ? N'hésitez pas à nous contacter</h2>
+        <app-form></app-form>
+    </div>
+</main>

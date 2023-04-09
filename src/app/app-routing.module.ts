@@ -5,6 +5,7 @@ import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { ListingPageComponent } from './listing-page/listing-page.component';
 import { ListingsComponent } from './listings/listings.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'apropos', component: AboutComponent },
   { path: 'listings', component: ListingsComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'detail/:id', component: ListingPageComponent}
+  { path: 'detail/:id', component: ListingPageComponent},
+  { path: 'admin', component: AdminDashboardComponent}
 ];
 
 @NgModule({

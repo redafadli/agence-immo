@@ -8,9 +8,6 @@
 }
 
 #menu-icon {
-    font-size: 30px;
-    height: auto;
-    width: auto;
     padding-left: 10px;
 }
 
@@ -30,4 +27,16 @@
 
 ::ng-deep .menu-item button {
     height: 20px;
+}
+
+@media screen and (min-width:800px) {
+    .logo {
+        height: 75px;
+        left: 45%;
+    }
+
+    #menu-button {
+        transform: scale(1.5);
+        margin-left: 25px;
+    }
 }
