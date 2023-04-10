@@ -19,11 +19,14 @@ import { ListingPageComponent } from './listing-page/listing-page.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { HttpClientModule } from '@angular/common/http';
 import { FormComponent } from './form/form.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
   declarations: [
-    AppComponent,    
+    AppComponent,
     HomeComponent, NavigationBarComponent, ItemsCarouselComponent, FooterComponent, AdminDashboardComponent, ContactComponent, AboutComponent, ListingsComponent, ListingPageComponent, FormComponent,
   ],
   imports: [
@@ -36,6 +39,9 @@ import { FormComponent } from './form/form.component';
     SlickCarouselModule,
     MatGridListModule,
     HttpClientModule,
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

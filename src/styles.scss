@@ -1,15 +1,24 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 :root {
-    --orange-color : #f2b9a2;
-    --blue-color : #0F084B;
-    --green-color : #59C9A5;
-    --yellow-color : #F3C969;
-    --pirple-color : #D5C9DF;
+    --main-color : #A5668B;
+    --background-color : #F6E7DF;
+}
 
-
+@font-face {
+    font-family: calibri_regular;
+    src: url("../assets/fonts/Calibri_Regular.ttf");
+}
+@font-face {
+    font-family: calibri_bold;
+    src: url("../assets/fonts/Calibri_Bold.ttf");
+}
+@font-face {
+    font-family: calibri_light;
+    src: url("../assets/fonts/Calibri_Light.ttf");
 }
 
 body {
     margin: unset;
+    background-color: var(--background-color);
 }

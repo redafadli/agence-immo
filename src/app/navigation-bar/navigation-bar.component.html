@@ -1,12 +1,12 @@
 <div class="container">
 
-    <button id="menu-button" mat-button [matMenuTriggerFor]="menu">
+    <button class="menu-button" mat-button [matMenuTriggerFor]="menu">
         <mat-icon>menu</mat-icon>
     </button>
 
-    <mat-menu #menu="matMenu" class="menu-item">
+    <mat-menu #menu="matMenu" class="menu-items">
         <ng-template matMenuContent>
-            <button mat-menu-item (click)="displayAccueil()">Accueil</button>
+            <button class="button" mat-menu-item (click)="displayAccueil()">Accueil</button>
             <button mat-menu-item (click)="displayListings()">Listings</button>
             <button mat-menu-item (click)="displayContact()">Contactez-nous</button>
             <button mat-menu-item (click)="displayApropos()">À propos</button>
@@ -14,5 +14,13 @@
         </ng-template>
     </mat-menu>
 
-    <img src="../assets/images/logo.png" class="logo">
+    <div class="desktop-menu">
+        <button mat-button (click)="displayAccueil()">Accueil</button>
+        <button mat-button (click)="displayListings()">Listings</button>
+        <button mat-button (click)="displayContact()">Contactez-nous</button>
+        <button mat-button (click)="displayApropos()">À propos</button>
+        <button mat-button (click)="displayAdminDashboard()">Admin</button>
+    </div>
+
+    <a class="logo" href="/"><img src="../assets/images/logo.png" class="logo"></a>
 </div>
