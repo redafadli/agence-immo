@@ -22,13 +22,17 @@ import { FormComponent } from './form/form.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { AddListingComponent } from './add-listing/add-listing.component';
+import { EditListingComponent } from './edit-listing/edit-listing.component';
+import { AnalyticsComponent } from './analytics/analytics.component';
+import { NgChartsModule } from 'ng2-charts';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent, NavigationBarComponent, ItemsCarouselComponent, FooterComponent, AdminDashboardComponent, ContactComponent, AboutComponent, ListingsComponent, ListingPageComponent, FormComponent,
+    HomeComponent, NavigationBarComponent, ItemsCarouselComponent, FooterComponent, AdminDashboardComponent, ContactComponent, AboutComponent, ListingsComponent, ListingPageComponent, FormComponent, AddListingComponent, EditListingComponent, AnalyticsComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +48,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatButtonModule,
     MatFormFieldModule,
     SlickCarouselModule,
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -7,15 +7,15 @@
 
 @font-face {
     font-family: calibri_regular;
-    src: url("../assets/fonts/Calibri_Regular.ttf");
+    src: url("../assets/fonts/Calibri_Regular.ttf"), format("opentype");
 }
 @font-face {
     font-family: calibri_bold;
-    src: url("../assets/fonts/Calibri_Bold.ttf");
+    src: url("../assets/fonts/calibri_bold.ttf"), format("opentype");
 }
 @font-face {
     font-family: calibri_light;
-    src: url("../assets/fonts/Calibri_Light.ttf");
+    src: url("../assets/fonts/calibri_light.ttf"), format("opentype");
 }
 
 body {

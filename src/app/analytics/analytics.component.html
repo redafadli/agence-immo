@@ -1,0 +1,39 @@
+<div class="analytics">
+  <h1>Analytics Dashboard</h1>
+
+  <div class="analytics_filters">
+    <h2>Filters</h2>
+    <!-- Filters go here -->
+  </div>
+  
+  <div class="analytics_charts">
+    <div class="analytics_chart">
+      <h2>User Analytics</h2>
+      <div style="display: block">
+        <canvas baseChart
+          
+          [options]="chartOptions"
+          [type]="chartType">
+        </canvas>
+      </div>
+      
+    </div>
+
+    <div class="analytics_chart">
+      <h2>Product Analytics</h2>
+      <!-- Product analytics chart goes here -->
+    </div>
+  </div>
+
+  <div class="analytics_tables">
+    <div class="analytics_table">
+      <h2>User Analytics Table</h2>
+      <!-- User analytics table goes here -->
+    </div>
+
+    <div class="analytics_table">
+      <h2>Product Analytics Table</h2>
+      <!-- Product analytics table goes here -->
+    </div>
+  </div>
+</div>

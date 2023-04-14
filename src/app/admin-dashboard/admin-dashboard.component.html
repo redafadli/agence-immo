@@ -1,1 +1,12 @@
-<p>admin-dashboard works!</p>
+<div class="dashboard">
+  <div class="dashboard_navigation">
+    <ul>
+      <li><a routerLink="/add-listing">Add Product</a></li>
+      <li><a routerLink="/edit-listing">Edit Product</a></li>
+      <li><a routerLink="/analytics">Analytics</a></li>
+    </ul>
+  </div>
+  <div class="dashboard_content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
