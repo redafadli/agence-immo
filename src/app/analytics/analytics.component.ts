@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ChartOptions, ChartType } from 'chart.js';
+import { ChartConfiguration, ChartOptions, ChartType } from 'chart.js';
 
 @Component({
   selector: 'app-analytics',
@@ -8,21 +8,42 @@ import { ChartOptions, ChartType } from 'chart.js';
 })
 export class AnalyticsComponent {
 
-  // chartData: ChartDataSets[] = [];
-  // chartLabels: Label[] = [];
-  chartOptions: ChartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      // xAxes: [{
-      //   ticks: {
-      //     beginAtZero: true
-      //   }
-      // }]
-    }
+  //line
+  public lineChartData: ChartConfiguration<'line'>['data'] = {
+    labels: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July'
+    ],
+    datasets: [
+      {
+        data: [65, 59, 80, 81, 56, 55, 40],
+        label: 'Series A',
+        fill: true,
+        tension: 0.5,
+        borderColor: 'black',
+        backgroundColor: 'rgba(255,0,0,0.3)'
+      }
+    ]
   };
-  chartType: ChartType = 'line';
+  public lineChartOptions: ChartOptions<'line'> = {
+    responsive: false
+  };
+  public lineChartLegend = true;
 
-  
+  // Pie
+  public pieChartOptions: ChartOptions<'pie'> = {
+    responsive: false,
+  };
+  public pieChartLabels = [['Download Sales'], 'Mail Sales'];
+  public pieChartDatasets = [{
+    data: [400, 100]
+  }];
+  public pieChartLegend = true;
+  public pieChartPlugins = [];
 
 }
