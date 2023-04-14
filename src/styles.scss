@@ -7,18 +7,19 @@
 
 @font-face {
     font-family: calibri_regular;
-    src: url("../assets/fonts/Calibri_Regular.ttf"), format("opentype");
+    src: url("assets/fonts/Calibri_Regular.ttf");
 }
 @font-face {
     font-family: calibri_bold;
-    src: url("../assets/fonts/calibri_bold.ttf"), format("opentype");
+    src: url("assets/fonts/calibri_bold.ttf");
 }
 @font-face {
     font-family: calibri_light;
-    src: url("../assets/fonts/calibri_light.ttf"), format("opentype");
+    src: url("assets/fonts/calibri_light.ttf");
 }
 
 body {
     margin: unset;
     background-color: var(--background-color);
 }
+

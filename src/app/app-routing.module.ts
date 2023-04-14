@@ -17,10 +17,7 @@ const routes: Routes = [
   { path: 'listings', component: ListingsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'detail/:id', component: ListingPageComponent},
-  { path: 'admin', component: AdminDashboardComponent},
-  {
-    path: '',
-    component: AdminDashboardComponent,
+  { path: 'admin', component: AdminDashboardComponent,
     children: [
       { path: '', redirectTo: 'analytics', pathMatch: 'full' },
       { path: 'add-listing', component: AddListingComponent },
