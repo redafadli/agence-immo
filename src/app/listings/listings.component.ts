@@ -2,6 +2,8 @@ import { Component, HostListener } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListingService } from 'src/services/listing.service';
 import { Listing } from '../listing';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+
 
 @Component({
   selector: 'app-listings',
@@ -11,32 +13,32 @@ import { Listing } from '../listing';
 export class ListingsComponent {
 
   public listings: Listing[] = [];
-  public colsNumber = 0;
+  public cols = 3;
 
-  constructor(private listingService: ListingService) { }
+  constructor(private listingService: ListingService, private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit(): void {
-    this.checkWindowSize();
     this.getListings();
+
+    this.breakpointObserver.observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small,
+      Breakpoints.Medium,
+    ]).subscribe(result => {
+      if (result.breakpoints[Breakpoints.XSmall]) {
+        this.cols = 1;
+      }
+      if (result.breakpoints[Breakpoints.Small]) {
+        this.cols = 2;
+      }
+      if (result.breakpoints[Breakpoints.Medium]) {
+        this.cols = 3;
+      }
+    });
   }
 
   getListings(): void {
     this.listingService.getListings()
       .subscribe(listings => this.listings = listings);
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize() {
-    this.checkWindowSize();
-  }
-
-  public checkWindowSize(){
-    if (window.innerWidth < 600){
-      this.colsNumber = 1;
-    } else if (window.innerWidth < 1024) {
-      this.colsNumber = 2;
-    } else {
-      this.colsNumber = 3;
-    }
   }
 }

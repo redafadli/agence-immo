@@ -18,7 +18,6 @@ import { ListingsComponent } from './listings/listings.component';
 import { ListingPageComponent } from './listing-page/listing-page.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { HttpClientModule } from '@angular/common/http';
-import { FormComponent } from './form/form.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -26,13 +25,16 @@ import { AddListingComponent } from './add-listing/add-listing.component';
 import { EditListingComponent } from './edit-listing/edit-listing.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { NgChartsModule } from 'ng2-charts';
+import { LogInComponent } from './log-in/log-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent, NavigationBarComponent, ItemsCarouselComponent, FooterComponent, AdminDashboardComponent, ContactComponent, AboutComponent, ListingsComponent, ListingPageComponent, FormComponent, AddListingComponent, EditListingComponent, AnalyticsComponent,
+    HomeComponent, NavigationBarComponent, ItemsCarouselComponent, FooterComponent, AdminDashboardComponent, ContactComponent, AboutComponent, ListingsComponent, ListingPageComponent, AddListingComponent, EditListingComponent, AnalyticsComponent, LogInComponent, SignUpComponent, ContactFormComponent,
   ],
   imports: [
     BrowserModule,

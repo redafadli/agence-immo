@@ -27,4 +27,12 @@ export class ListingPageComponent {
       .subscribe(listing =>
         this.listing = listing);
   }
+
+  scrollToContactForm() {
+    document.getElementById("contact_form")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest"
+    });
+}
 }

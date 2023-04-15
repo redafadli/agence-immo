@@ -1,16 +1,29 @@
 <main class="container">
-    <div *ngIf="listing">
+    <div class="listing" *ngIf="listing">
         <h1 class="name"> {{listing.title}}</h1>
         <img class="image" [src]="listing.image">
-        <h3 class="price">{{listing.price}}€</h3>
-        <h3 class="city">{{listing.city}}</h3>
+        <div class="price-city">
+            <h3 class="price">100.000€</h3>
+            <h3 class="city">{{listing.city}}</h3>
+        </div>
+    </div>
+    <div class="divs-container">
+        <div class="space">
+            <mat-icon>home</mat-icon>
+            <span>120m²</span>
+        </div>
+        <div class="spec2">
+            <mat-icon>alarm</mat-icon>
+            <span>140</span>
+        </div>
+
     </div>
     <div class="contact">
         <p>Interessé par ce bien ? N'hesitez pas à nous contacter</p>
-        <button>Formulaire</button>
+        <button mat-button (click)="scrollToContactForm()">Formulaire</button>
     </div>
     <div class="description-container">
-        <h1 class="title">Description</h1>
+        <h1 id="description-title" class="title">Description</h1>
         <p class="description">{{listing?.description}}</p>
     </div>
     <div class="address-container">
@@ -22,7 +35,9 @@
         <p class="characs">Liste de caractéristiques</p>
     </div>
     <div class="form-container">
-        <h2 class="form-title">Voulez-vous visiter ce bien ou avoir plus d'informations ? N'hésitez pas à nous contacter</h2>
-        <app-form></app-form>
+        <p class="form-title">Voulez-vous visiter ce bien ou avoir plus d'informations ? N'hésitez pas à nous contacter
+        </p>
+        <app-contact-form id="contact_form"></app-contact-form>
     </div>
 </main>
+<app-footer class="footer"></app-footer>

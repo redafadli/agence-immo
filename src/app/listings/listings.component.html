@@ -1,21 +1,24 @@
 <main class="container">
-    <mat-grid-list class="grid" [cols]="colsNumber" rowHeight="3:2">
+    <mat-grid-list class="grid" [cols]="cols" rowHeight="3:2">
         <mat-grid-tile *ngFor="let listing of listings">
-            <div>
+            <div class="item-container">
                 <a class="item" routerLink="/detail/{{listing.id}}">
                     <img class="image" src="{{listing.image}}">
-                    <span class="infos">
+                    <div class="infos">
                         <div class="title-background">
                             <span class="title"> {{listing.title}}</span>
                         </div>
-                        <div class="price-city">
-                            <span class="price">{{listing.price}} €</span>
+                        <div class="state-city">
+                            <span class="state">À vendre</span>
                             <span class="city">{{listing.city}}</span>
                         </div>
-                    </span>
+                        <div class="price-city">
+                            <span class="price">{{listing.price}} €</span>
+                        </div>
+                    </div>
                 </a>
             </div>
         </mat-grid-tile>
     </mat-grid-list>
-    <app-footer></app-footer>
 </main>
+<app-footer></app-footer>

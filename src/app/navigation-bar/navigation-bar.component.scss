@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: flex-start;
     position: relative;
+    box-shadow: 0 0px 14px -2px rgb(171, 171, 171)
 }
 
 #menu-icon {
@@ -13,7 +14,7 @@
 
 .logo {
     position: absolute;
-    left: 43%;
+    left: 40%;
     height: 63px;
     width: auto;
 }
@@ -40,7 +41,8 @@
 
     .logo {
         height: 75px;
-        left: 44%;
+        left: 0;
+        padding-left: 30px;
     }
 
     .desktop-menu {

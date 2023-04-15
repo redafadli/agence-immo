@@ -9,6 +9,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { AddListingComponent } from './add-listing/add-listing.component';
 import { EditListingComponent } from './edit-listing/edit-listing.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
+import { LogInComponent } from './log-in/log-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: 'listings', component: ListingsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'detail/:id', component: ListingPageComponent},
+  { path: 'log-in', component: LogInComponent},
+  { path: 'sign-up', component: SignUpComponent},
   { path: 'admin', component: AdminDashboardComponent,
     children: [
       { path: '', redirectTo: 'analytics', pathMatch: 'full' },

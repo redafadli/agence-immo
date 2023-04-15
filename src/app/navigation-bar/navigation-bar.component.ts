@@ -27,7 +27,12 @@ export class NavigationBarComponent {
   displayListings() {
     this.router.navigate(['/listings']);
   }
+  
   displayAdminDashboard() {
     this.router.navigate(['/admin']);
+  }
+  
+  displayLogIn() {
+    this.router.navigate(['/log-in']);
   }
 }
