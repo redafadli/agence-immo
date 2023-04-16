@@ -1,3 +1,22 @@
 <h2>Contactez nous</h2>
-<app-contact-form></app-contact-form>
+<div class="container">
+    <span class="contact-span">Pour des conseils ou une estimation gratuite, contactez nous</span>
+    <p class="paragraph">Vous souhaitez plus de renseignements sur les services de notre
+        agence immobilière ? Bénéficiez des conseils d'agents
+        qualifiés et expérimentés, nous répondrons à toutes vos questions. Et
+        nous pouvons évidemment vous proposer d'estimer la valeur d'un bien.
+    </p>
+    <div class="small-container">
+        <button (click)="goToMaps()" class="location">
+            <mat-icon>location_on</mat-icon>
+            <span>Trouvez nous sur Google Maps</span>
+        </button>
+        <button class="phone">
+            <mat-icon>phone</mat-icon>
+            <span>+324 75 22 35 53</span>
+        </button>
+    </div>
+        <h3 class="mail-span">Contactez nous par email</h3>
+        <app-contact-form></app-contact-form>
+</div>
 <app-footer></app-footer>

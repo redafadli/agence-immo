@@ -1,0 +1,90 @@
+h2 {
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'calibri_bold';
+    font-size: 25px;
+    color: var(--dark-color);
+    margin-bottom: 20px;
+}
+
+.container{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.contact-span {
+    font-size: 20px;
+    color: var(--dark-color);
+    font-family: 'calibri_bold';
+}
+
+.mail-span {
+    font-size: 18px;
+    color: var(--dark-color);
+    font-family: 'calibri_light';
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.paragraph {
+    margin-top: 30px;
+    font-size: 15px;
+    font-family: 'calibri_regular';
+    color:var(--main-color);
+}
+
+.phone,
+.location {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: var(--main-color);
+}
+
+.phone,
+.location {
+    width: 40%;
+    border-radius: 30px;
+    border: none;
+
+}
+
+.phone {
+    margin-right: 15px;
+}
+
+.location {
+    margin-left: 15px;
+}
+
+.small-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.phone mat-icon,
+.location mat-icon,
+.phone span,
+.location span {
+    display: block;
+    margin: 0 auto;
+    color: white;
+}
+
+.phone span,
+.location span {
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'calibri_regular';
+    font-size: 15px;
+}
+
+
+.phone mat-icon,
+.location mat-icon {
+    margin-top: 10px;
+    font-size: 26px;
+}

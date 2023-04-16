@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -6,4 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent {
+
+  constructor(private router : Router){
+
+  }
+
+  goToMaps(){
+    //need to go to maps
+    this.router.navigate(['/listings']);
+  }
 }

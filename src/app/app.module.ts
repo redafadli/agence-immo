@@ -28,6 +28,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { LogInComponent } from './log-in/log-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -51,6 +52,8 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     MatFormFieldModule,
     SlickCarouselModule,
     NgChartsModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
