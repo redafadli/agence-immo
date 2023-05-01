@@ -25,7 +25,7 @@ export class AddListingComponent {
       city :  this.city, 
       description : this.description,
       address : this.address,
-      image : ''
+      image : "https://source.unsplash.com/450x250/?nature"
     };
     this.listingService.postListing(listing);
   }

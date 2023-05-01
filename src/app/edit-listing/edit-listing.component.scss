@@ -18,7 +18,7 @@
   gap: 1rem;
 }
 
-#add-listing label {
+.add-listing label {
   font-size: 1.2rem;
   font-weight: bold;
 }
@@ -51,4 +51,11 @@ mat-label {
 .cancel-button {
   background-color: var(--secondary-color);
   color: var(--dark-color);
+}
+
+.ids_list {
+  margin-bottom: 10px;
+  height: 25px;
+  border-color: var(--main-color);
+  background-color: unset;
 }

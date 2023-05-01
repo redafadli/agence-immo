@@ -29,7 +29,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -54,6 +54,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     NgChartsModule,
     FormsModule,
     ReactiveFormsModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
