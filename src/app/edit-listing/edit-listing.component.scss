@@ -1,45 +1,54 @@
-#edit-listing {
-    padding: 2rem;
-  }
-  
-  #edit-listing h1 {
-    margin-bottom: 2rem;
-  }
-  
-  #edit-listing form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  #edit-listing label {
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  
-  #edit-listing input[type="text"],
-  #edit-listing textarea,
-  #edit-listing input[type="number"],
-  #edit-listing input[type="file"] {
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    border: 1px solid #ccc;
-    font-size: 1.2rem;
-  }
-  
-  #edit-listing button[type="submit"],
-  #edit-listing button[type="button"] {
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    border: none;
-    background-color: #1a1a1a;
-    color: #fff;
-    font-size: 1.2rem;
-    cursor: pointer;
-  }
-  
-  #edit-listing button[type="submit"]:hover,
-  #edit-listing button[type="button"]:hover {
-    background-color: #333;
-  }
-  
+#add-listing {
+  padding: 2rem;
+}
+
+.dashboard_page {
+  display: flex;
+  flex-direction: column;
+}
+
+
+#add-listing h1 {
+  margin-bottom: 2rem;
+}
+
+#add-listing form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#add-listing label {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.dashboard_page {
+  background-color: var(--background-color);
+  color: var(--dark-color);
+}
+
+h1 {
+  color: var(--dark-color);
+}
+
+.mat-form-field,
+mat-label {
+  color: var(--dark-color);
+}
+
+.mat-form-field {
+  background-color: var(--secondary-color);
+}
+
+.submit-button {
+  background-color: var(--main-color);
+  color: white;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.cancel-button {
+  background-color: var(--secondary-color);
+  color: var(--dark-color);
+}

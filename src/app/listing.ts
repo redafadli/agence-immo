@@ -1,9 +1,9 @@
 export interface Listing {
     id : number;
-    image: string;
-    title: string;
-    price : string;
-    city : string;
+    name: string;
+    price : number;
     description : string;
+    city : string;
     address : string;
+    image: string;
 }

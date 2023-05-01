@@ -1,22 +1,33 @@
-<div class="dashboard_page" id="edit-listing">
-    <h1>Edit listing</h1>
-    <form>
-      <label for="listing-id">Listing Id:</label>
-      <input type="number" id="listing-id" name="listing-id" value="1">
-
-      <label for="listing-name">Listing Name:</label>
-      <input type="text" id="listing-name" name="listing-name" value="listing Name">
-  
-      <label for="listing-description">Listing Description:</label>
-      <textarea id="listing-description" name="listing-description">Listing Description</textarea>
-  
-      <label for="listing-price">Listing Price:</label>
-      <input type="number" id="listing-price" name="listing-price" value="100">
-  
-      <label for="listing-image">Listing Image:</label>
-      <input type="file" id="listing-image" name="listing-image">
-  
-      <button type="submit">Save</button>
-      <button type="button">Cancel</button>
-    </form>
-  </div>
+<div class="dashboard_page" id="add-listing">
+  <h1>Edit listing</h1>
+  <mat-form-field appearance="fill">
+    <mat-label for="Listing-id">Id</mat-label>
+    <input matInput id="listing-id" name="listing-id" type="number">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label for="Listing-name">Name</mat-label>
+    <input matInput id="listing-name" name="listing-name">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label for="listing-price">Price</mat-label>
+    <input matInput type="number" id="listing-price" name="listing-price">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label for="listing-city">City</mat-label>
+    <input matInput id="listing-price" name="listing-price">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label for="listing-description">Description</mat-label>
+    <textarea matInput id="listing-description" name="listing-description"></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label for="listing-address">Address</mat-label>
+    <input matInput id="listing-description" name="listing-description">
+  </mat-form-field>
+  <form appearance="fill"> 
+    <label for="listing-image">Images</label>
+    <input type="file" id="listing-image" name="listing-image">
+  </form>
+  <button class="submit-button" mat-button type="submit">Save</button>
+  <button class="cancel-button" mat-button type="button">Cancel</button>
+</div>

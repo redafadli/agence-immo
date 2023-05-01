@@ -8,19 +8,17 @@ import { Listing } from "../app/listing";
 })
 export class ListingService {
 
-    private listingsUrl = 'https://localhost:7102';
+    private apiUrl = "https://localhost:7102";
 
-    httpOptions = {
+    private httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    }
+    };
 
-    constructor(
-        private http: HttpClient
-    ) { }
+    constructor(private http: HttpClient) { }
 
     //GET listings from the http server
-    getListings(): Observable<Listing[]> {
-        return this.http.get<Listing[]>(this.listingsUrl)
+    public getListings(): Observable<Listing[]> {
+        return this.http.get<Listing[]>(this.apiUrl)
             .pipe(
                 tap(_ => console.log("Listings Loaded")),
                 catchError(this.handleError<Listing[]>('getListings', []))
@@ -28,23 +26,31 @@ export class ListingService {
     }
 
     //GET one listing from the http server
-    getListing(id: number): Observable<Listing> {
-        const url = `${this.listingsUrl}/listing/${id}`
+    public getListingById(id: number): Observable<Listing> {
+        const url = `${this.apiUrl}/listing/${id}`
         return this.http.get<Listing>(url).pipe(
             tap(_ => console.log(`Got listing id=${id}`)),
             catchError(this.handleError<Listing>(`GetListing id=${id}`))
         );
     }
 
-    updateListing(listing: Listing): Observable<any> {
-        return this.http.put(this.listingsUrl, listing, this.httpOptions).pipe(
+    // POST one listing to the http server
+    public postListing(listing: Listing){
+        const url = `${this.apiUrl}/listing`;
+        return this.http.post(url, listing, this.httpOptions)
+        .subscribe()
+    }
+
+    // PUT edit listing
+    updateListing(listing: Listing): Observable<Listing> {
+        return this.http.put<Listing>(this.apiUrl, listing, this.httpOptions).pipe(
             tap(_ => console.log(`Updated listing id=${listing.id}`)),
             catchError(this.handleError<any>('UpdateListing'))
-        )
+        );
     }
 
     deleteListing(id: Number): Observable<Listing> {
-        const url = `${this.listingsUrl}/${id}`
+        const url = `${this.apiUrl}/listing/${id}`
         return this.http.delete<Listing>(url, this.httpOptions).pipe(
             tap(_ => console.log(`Deleted listing id=${id}`)),
             catchError(this.handleError<Listing>('deleteHero'))

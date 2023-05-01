@@ -23,7 +23,7 @@ export class ListingPageComponent {
 
   getListing(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.listingService.getListing(id)
+    this.listingService.getListingById(id)
       .subscribe(listing =>
         this.listing = listing);
   }
