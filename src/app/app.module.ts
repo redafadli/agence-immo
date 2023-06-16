@@ -10,7 +10,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { FooterComponent } from './footer/footer.component';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
+// import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
@@ -30,6 +30,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
+import { AuthModule } from '@auth0/auth0-angular';
 
 
 @NgModule({
@@ -41,7 +42,6 @@ import {MatSelectModule} from '@angular/material/select';
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
-    CarouselModule,
     MatMenuModule,
     BrowserAnimationsModule,
     SlickCarouselModule,
@@ -55,11 +55,16 @@ import {MatSelectModule} from '@angular/material/select';
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
+    AuthModule.forRoot({
+      domain: 'dev-8mfwog6rw2cpo7w5.us.auth0.com',
+      clientId: 'ZC0Er65i82Lqdjk9LlWIaYqFTnjCLo23',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    }),
   ],
   providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ],
 })
 export class AppModule { }
