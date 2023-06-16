@@ -10,7 +10,7 @@
           <label for="password">Password:</label>
           <input type="password" id="password" class="form-control" />
         </div>
-        <button mat-button type="submit" class="btn btn-primary">Sign In</button>
+        <button mat-button (click)="auth.loginWithRedirect()" type="submit" class="btn btn-primary">Log In</button>
         <div class="divider">or</div>
         <a href="/sign-up">Create a New Account</a>
       </form>
