@@ -30,8 +30,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
-import { AuthModule } from '@auth0/auth0-angular';
-
+import {AuthModule} from '@auth0/auth0-angular';
 
 @NgModule({
   declarations: [

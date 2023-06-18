@@ -20,7 +20,14 @@
         <button mat-button (click)="displayContact()">Contactez-nous</button>
         <button mat-button (click)="displayApropos()">À propos</button>
         <button mat-button (click)="displayAdminDashboard()">Admin</button>
-        <button mat-button (click)="displayLogIn()">Log in</button>
+        <ng-container *ngIf="authenticationService.isAuthenticated() | async; else loginContent">
+            <!-- Display content for authenticated users -->
+            <button mat-button class="btn btn-primary" (click)="logout()">Logout</button>
+          </ng-container>
+          <ng-template #loginContent>
+            <!-- Display content for unauthenticated users -->
+            <button mat-button class="btn btn-primary" (click)="displayLogIn()">Login</button>
+          </ng-template>
     </div>
 
     <a class="logo" href="/"><img src="../assets/images/logo.png" class="logo"></a>

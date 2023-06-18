@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject } from '@angular/core';
+import { AuthenticationService } from 'src/services/authentication.service';
 
 @Component({
   selector: 'app-log-in',
@@ -7,7 +8,16 @@ import { AuthService } from '@auth0/auth0-angular';
   styleUrls: ['./log-in.component.scss']
 })
 export class LogInComponent {
-  constructor( public auth : AuthService) {
-    this.auth = auth;
-  }
+  constructor(
+    @Inject(DOCUMENT) public document: Document,
+    public authenticationService: AuthenticationService
+    ) {}
+
+    login(): void {
+      this.authenticationService.login();
+    }
+  
+    logout(): void {
+      this.authenticationService.logout();
+    }
 }

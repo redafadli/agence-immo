@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/services/authentication.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -10,6 +11,7 @@ export class NavigationBarComponent {
 
   constructor(
     private router: Router,
+    public authenticationService: AuthenticationService,
   ) { }
 
   displayAccueil() {
@@ -34,5 +36,9 @@ export class NavigationBarComponent {
   
   displayLogIn() {
     this.router.navigate(['/log-in']);
+  }
+
+  logout(): void {
+    this.authenticationService.logout();
   }
 }
