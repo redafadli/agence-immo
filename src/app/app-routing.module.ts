@@ -11,6 +11,7 @@ import { EditListingComponent } from './edit-listing/edit-listing.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { AuthGuard } from '@auth0/auth0-angular';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -27,8 +28,9 @@ const routes: Routes = [
       { path: 'add-listing', component: AddListingComponent },
       { path: 'edit-listing', component: EditListingComponent },
       { path: 'analytics', component: AnalyticsComponent }
-    ]
-  }
+    ],
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
