@@ -4,34 +4,41 @@
         <mat-icon class="mat-icon">menu</mat-icon>
     </button>
 
-    <mat-menu #menu="matMenu" class="menu-items">
+    <mat-menu #menu="matMenu" class="mobile-menu-items">
         <ng-template matMenuContent>
             <button class="button" mat-menu-item (click)="displayAccueil()">Accueil</button>
             <button mat-menu-item (click)="displayListings()">Listings</button>
             <button mat-menu-item (click)="displayContact()">Contactez-nous</button>
             <button mat-menu-item (click)="displayApropos()">À propos</button>
-            <button mat-menu-item (click)="displayAdminDashboard()">Admin</button>
+            <ng-container *ngIf="authenticationService.isAuthenticated() | async; else loginContent">
+                <!-- Display content for authenticated users -->
+                <button mat-button class="btn btn-primary" (click)="logout()">Logout</button>
+            </ng-container>
+            <ng-template #loginContent>
+                <!-- Display content for unauthenticated users -->
+                <button mat-button class="btn btn-primary" (click)="displayLogIn()">Login</button>
+            </ng-template>
         </ng-template>
     </mat-menu>
 
     <div class="desktop-menu">
-        <div *ngIf="auth.user$ | async as user">
-            <h2>{{ user.name }}</h2>
-        </div>
-        
         <button mat-button (click)="displayAccueil()">Accueil</button>
         <button mat-button (click)="displayListings()">Listings</button>
         <button mat-button (click)="displayContact()">Contactez-nous</button>
         <button mat-button (click)="displayApropos()">À propos</button>
-        <button mat-button (click)="displayAdminDashboard()">Admin</button>
+        <div *ngIf="auth.user$ | async as user">
+                <button class="admin-button" mat-menu-item *ngIf="isAdmin(user.name!)" (click)="displayAdminDashboard()">
+                    Admin
+                </button>
+            </div>
         <ng-container *ngIf="authenticationService.isAuthenticated() | async; else loginContent">
             <!-- Display content for authenticated users -->
             <button mat-button class="btn btn-primary" (click)="logout()">Logout</button>
-          </ng-container>
-          <ng-template #loginContent>
+        </ng-container>
+        <ng-template #loginContent>
             <!-- Display content for unauthenticated users -->
             <button mat-button class="btn btn-primary" (click)="displayLogIn()">Login</button>
-          </ng-template>
+        </ng-template>
     </div>
 
     <a class="logo" href="/"><img src="../assets/images/logo.png" class="logo"></a>

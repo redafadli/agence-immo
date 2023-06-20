@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { AuthenticationService } from 'src/services/authentication.service';
 
+
 @Component({
   selector: 'app-navigation-bar',
   templateUrl: './navigation-bar.component.html',
@@ -50,5 +51,9 @@ export class NavigationBarComponent {
 
   logout(): void {
     this.authenticationService.logout();
+  }
+
+  isAdmin(email: string): boolean {
+    return /@micasa.be\s*$/.test(email);
   }
 }

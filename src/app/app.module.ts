@@ -31,6 +31,8 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {AuthModule} from '@auth0/auth0-angular';
+import { CommonModule } from '@angular/common';  
+
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import {AuthModule} from '@auth0/auth0-angular';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     MatIconModule,
     MatMenuModule,
