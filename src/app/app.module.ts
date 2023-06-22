@@ -31,13 +31,14 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {AuthModule} from '@auth0/auth0-angular';
-import { CommonModule } from '@angular/common';  
+import { CommonModule } from '@angular/common';
+import { FavoritesComponent } from './favorites/favorites.component';  
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent, NavigationBarComponent, ItemsCarouselComponent, FooterComponent, AdminDashboardComponent, ContactComponent, AboutComponent, ListingsComponent, ListingPageComponent, AddListingComponent, EditListingComponent, AnalyticsComponent, LogInComponent, SignUpComponent, ContactFormComponent,
+    HomeComponent, NavigationBarComponent, ItemsCarouselComponent, FooterComponent, AdminDashboardComponent, ContactComponent, AboutComponent, ListingsComponent, ListingPageComponent, AddListingComponent, EditListingComponent, AnalyticsComponent, LogInComponent, SignUpComponent, ContactFormComponent, FavoritesComponent,
   ],
   imports: [
     BrowserModule,

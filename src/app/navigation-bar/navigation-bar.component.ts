@@ -10,14 +10,19 @@ import { AuthenticationService } from 'src/services/authentication.service';
   styleUrls: ['./navigation-bar.component.scss']
 })
 export class NavigationBarComponent {
-  
+
   profileJson: string = "";
+  userName : string | undefined;
 
   constructor(
     private router: Router,
     public authenticationService: AuthenticationService,
     public auth: AuthService,
-  ) { }
+  ) {
+    this.auth.user$.subscribe((user) => {
+      this.userName = user?.name;
+    });
+  }
 
   ngOnInit(): void {
     this.auth.user$.subscribe(
@@ -40,14 +45,18 @@ export class NavigationBarComponent {
   displayListings() {
     this.router.navigate(['/listings']);
   }
-  
+
   displayAdminDashboard() {
     this.router.navigate(['/admin']);
   }
-  
+
   displayLogIn() {
     this.router.navigate(['/log-in']);
   }
+
+  // displayFavorites() {
+  //   this.router.navigate(['/favorites/:user_email']);
+  // }
 
   logout(): void {
     this.authenticationService.logout();
