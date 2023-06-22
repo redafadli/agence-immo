@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ListingService } from 'src/services/listing.service';
 import { Listing } from '../listing';
+import { AuthenticationService } from 'src/services/authentication.service';
 
 @Component({
   selector: 'app-listing-page',
@@ -13,6 +14,7 @@ export class ListingPageComponent {
   constructor(
     private route: ActivatedRoute,
     private listingService: ListingService,
+    public authenticationService: AuthenticationService,
   ) { }
 
   @Input() listing?: Listing;
@@ -34,5 +36,9 @@ export class ListingPageComponent {
       block: "start",
       inline: "nearest"
     });
-}
+  }
+
+  addToFavorites() {
+    throw new Error('Method not implemented.');
+  }
 }
