@@ -15,7 +15,8 @@ export class ListingsComponent {
   public listings: Listing[] = [];
   public cols = 3;
 
-  constructor(private listingService: ListingService, private breakpointObserver: BreakpointObserver) { }
+  constructor(private listingService: ListingService,
+    private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit(): void {
     this.getListings();

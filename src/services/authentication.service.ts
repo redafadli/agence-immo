@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService, IdToken } from '@auth0/auth0-angular';
+import { AuthService, IdToken, User } from '@auth0/auth0-angular';
 import { Observable, map } from 'rxjs';
 
 
@@ -8,7 +8,15 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  constructor(private auth: AuthService, private router: Router) { }
+  currentUserName: string = '';
+
+  constructor(private auth: AuthService,
+    private router: Router,
+    private authService: AuthService) {
+      this.authService.user$.subscribe(user => {
+        this.currentUserName =  user?.name!;
+      });
+     }
 
   login(): void {
     this.auth.loginWithRedirect();

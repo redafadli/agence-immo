@@ -25,6 +25,12 @@ export class FavoriteService {
             )
     }
 
+    public postFavorite(favorite: Favorite) {
+        const url = `${this.apiUrl}/favorite`;
+        return this.http.post(url, favorite, this.httpOptions)
+        .subscribe()
+    }
+
         /**
     * Handle Http operation that failed.
     * Let the app continue.

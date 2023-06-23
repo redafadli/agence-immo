@@ -1,5 +1,30 @@
+<!-- <main class="container">
+    <mat-grid-list class="grid" [cols]="cols" rowHeight="3:2">
+        <mat-grid-tile *ngFor="let listing of listings">
+            <div class="item-container">
+                <a class="item" routerLink="/detail/{{listing.id}}">
+                    <img class="image" src="{{listing.image}}">
+                    <div class="infos">
+                        <div class="title-background">
+                            <span class="title"> {{listing.name}}</span>
+                        </div>
+                        <div class="state-city">
+                            <span class="state">À vendre</span>
+                            <span class="city">{{listing.city}}</span>
+                        </div>
+                        <div class="price-city">
+                            <span class="price">{{listing.price}} €</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</main> -->
+
 <div *ngFor="let favorite of favorites">
-    <p>Favorite id : {{favorite.id}}</p>
-    <p>Favorite owner : {{favorite.user_email}}</p>
-    <p>Favorite listing id : {{favorite.listing_id}}</p>
+    <p>{{favorite.id}}</p>
+</div>
+<div *ngFor="let listing of listings">
+    <p>{{listing.id}}</p>
 </div>
