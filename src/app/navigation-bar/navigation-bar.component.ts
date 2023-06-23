@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { AuthenticationService } from 'src/services/authentication.service';
@@ -53,10 +53,6 @@ export class NavigationBarComponent {
   displayLogIn() {
     this.router.navigate(['/log-in']);
   }
-
-  // displayFavorites() {
-  //   this.router.navigate(['/favorites/:user_email']);
-  // }
 
   logout(): void {
     this.authenticationService.logout();
