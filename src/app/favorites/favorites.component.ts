@@ -6,6 +6,7 @@ import { Favorite } from '../favorite';
 import { ListingService } from 'src/services/listing.service';
 import { Listing } from '../listing';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { forkJoin, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-favorites',
@@ -15,9 +16,10 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 export class FavoritesComponent {
 
   public cols = 3;
-  
-  @Input() listings: Listing[] = [];
-  @Input() favorites: Favorite[] = [];
+
+  listings!: Listing[];
+  favorites: Favorite[] = [];
+  listing!: Listing;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,11 +29,8 @@ export class FavoritesComponent {
     private breakpointObserver: BreakpointObserver
   ) { }
 
-
   ngOnInit(): void {
-    this.getFavorites();
-    this.getListings();
-
+    this.getListingsByIds();
 
     this.breakpointObserver.observe([
       Breakpoints.XSmall,
@@ -50,20 +49,16 @@ export class FavoritesComponent {
     });
   }
 
-  getFavorites(): void {
+  getListingsByIds(): void {
     const user_email = String(this.route.snapshot.paramMap.get('user_email'));
     this.favoriteService.getFavoritesByEmail(user_email)
-      .subscribe(favorites =>
-        this.favorites = favorites);
-  }
-
-  getListings() : void {
-    let listings: Listing[] = [];
-    for (let favorite of this.favorites) {
-      this.listingService.getListingById(favorite.id)
-        .subscribe(listing =>
-          listings.push(listing));
-    }
-    this.listings = listings;
+      .subscribe(favorites => {
+        this.favorites = favorites
+        const favoriteIds = favorites.map(favorite => favorite.listing_id);
+        const listingObservables = favoriteIds.map(id => this.listingService.getListingById(id));
+        forkJoin(listingObservables).subscribe(listings => {
+          this.listings = listings;
+        });
+      });
   }
 }
