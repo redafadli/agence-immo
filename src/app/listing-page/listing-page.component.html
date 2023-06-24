@@ -2,7 +2,10 @@
     <div class="listing" *ngIf="listing">
         <h1 class="name"> {{listing.name}}</h1>
         <img class="image" [src]="listing.image">
-        <mat-icon class="favorite-outline-icon" (click)="addToFavorites()">favorite_border</mat-icon>
+        <mat-icon class="favorite-outline-icon" (click)="addToFavorites()">
+            {{ isFavorite ? 'favorite' : 'favorite_border' }}
+          </mat-icon>
+          
         <div class="price-city">
             <h3 class="price">100.000€</h3>
             <h3 class="city">{{listing.city}}</h3>

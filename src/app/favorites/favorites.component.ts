@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/services/authentication.service';
 import { FavoriteService } from 'src/services/favorite.service';
@@ -6,7 +6,7 @@ import { Favorite } from '../favorite';
 import { ListingService } from 'src/services/listing.service';
 import { Listing } from '../listing';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { forkJoin, takeUntil } from 'rxjs';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-favorites',

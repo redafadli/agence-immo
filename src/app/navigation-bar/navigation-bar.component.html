@@ -12,6 +12,7 @@
             <button mat-menu-item (click)="displayApropos()">À propos</button>
             <ng-container *ngIf="authenticationService.isAuthenticated() | async; else loginContent">
                 <!-- Display content for authenticated users -->
+                <button mat-button class="btn btn-primary" routerLink="/favorites/{{userName}}">Favorites</button>
                 <button mat-button class="btn btn-primary" (click)="logout()">Logout</button>
             </ng-container>
             <ng-template #loginContent>
@@ -35,7 +36,6 @@
             <!-- Display content for authenticated users -->
             <button mat-button class="btn btn-primary" routerLink="/favorites/{{userName}}">Favorites</button>
             <button mat-button class="btn btn-primary" (click)="logout()">Logout</button>
-
         </ng-container>
         <ng-template #loginContent>
             <!-- Display content for unauthenticated users -->

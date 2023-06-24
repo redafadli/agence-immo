@@ -1,5 +1,4 @@
-import { Component, HostListener } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component} from '@angular/core';
 import { ListingService } from 'src/services/listing.service';
 import { Listing } from '../listing';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';

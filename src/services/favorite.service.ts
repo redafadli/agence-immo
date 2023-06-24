@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, catchError, of, tap } from "rxjs";
+import { Observable, catchError, map, of, tap } from "rxjs";
 import { Favorite } from "src/app/favorite";
 
 @Injectable({
@@ -25,11 +25,16 @@ export class FavoriteService {
             )
     }
 
-    public postFavorite(favorite: Favorite) {
+    public postFavorite(favorite: Favorite): Observable<any> {
         const url = `${this.apiUrl}/favorite`;
-        return this.http.post(url, favorite, this.httpOptions)
-        .subscribe()
-    }
+        return this.http.post(url, favorite, this.httpOptions).pipe(
+          map(response => {
+            // You can perform any necessary transformations on the response data here
+            // For example, if the response contains the added favorite object, you can extract and return it
+            return response;
+          })
+        );
+      }
 
         /**
     * Handle Http operation that failed.
