@@ -20,7 +20,7 @@ export class FavoriteService {
         const url = `${this.apiUrl}/favorite/user_email/${user_email}`;
         return this.http.get<Favorite[]>(url)
             .pipe(
-                tap(_ => console.log("Favorites Loaded")),
+                tap(_ => console.log("Favorites of",user_email, "Loaded")),
                 catchError(this.handleError<Favorite[]>('getFavorites', []))
             )
     }
