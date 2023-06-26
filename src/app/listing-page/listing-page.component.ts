@@ -1,10 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ListingService } from 'src/services/listing.service';
 import { Listing } from '../listing';
 import { AuthenticationService } from 'src/services/authentication.service';
 import { FavoriteService } from 'src/services/favorite.service';
 import { Favorite } from '../favorite';
+import { AuthService } from '@auth0/auth0-angular';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-listing-page',
@@ -21,6 +23,7 @@ export class ListingPageComponent {
     private route: ActivatedRoute,
     private listingService: ListingService,
     private favoriteService: FavoriteService,
+    private authService: AuthService,
     public authenticationService: AuthenticationService,
   ) { }
 
@@ -28,8 +31,7 @@ export class ListingPageComponent {
 
   ngOnInit(): void {
     this.getListing();
-    this.getFavorites();
-    this.checkFavorite();
+    this.checkIfFavorite();
   }
 
   getListing(): void {
@@ -47,21 +49,26 @@ export class ListingPageComponent {
     });
   }
 
-  checkFavorite(): void {
-    const listingId = this.listing?.id;
-    if (listingId) {
-      this.isFavorite = this.favorites.some(favorite => favorite.listing_id === listingId);
-    }
+  checkIfFavorite(): void {
+    let user_email = '';
+    const listing_id = Number(this.route.snapshot.paramMap.get('id'));
+    this.authService.user$.subscribe(user => {
+      user_email = user?.name!;
+      // Check if the favorite already exists
+      this.favoriteService.getFavoritesByEmail(user_email).subscribe(favorites => {
+        const existingFavorite = favorites.find(favorite => favorite.listing_id === listing_id);
+        if (existingFavorite) {
+          // The favorite already exists, handle accordingly (e.g., show an error message)
+          this.isFavorite = true;
+        } else {
+          // The favorite doesn't exist, add it
+          this.isFavorite = false;
+        }
+      });
+    });
   }
 
-  getFavorites(): void {
-    const user_email = String(this.route.snapshot.paramMap.get('user_email'));
-    this.favoriteService.getFavoritesByEmail(user_email)
-      .subscribe(favorites =>
-        this.favorites = favorites);
-  }
-
-  addToFavorites(): void {
+  addOrDeleteFavorite(): void {
     const user_email = this.authenticationService.currentUserName;
     const listing_id = this.listing?.id ?? 0;
 
@@ -71,7 +78,11 @@ export class ListingPageComponent {
 
       if (existingFavorite) {
         // The favorite already exists, handle accordingly (e.g., show an error message)
-        console.log('Favorite already exists.');
+        this.favoriteService.deleteFavorite(existingFavorite.id)
+          .subscribe(() =>{
+            console.log('delete favorite')
+            this.checkIfFavorite();
+          }) 
       } else {
         // The favorite doesn't exist, add it
         const newFavorite: Favorite = {
@@ -82,6 +93,8 @@ export class ListingPageComponent {
 
         this.favoriteService.postFavorite(newFavorite).subscribe(() => {
           console.log('Favorite added successfully.');
+          delay(2000)
+          this.checkIfFavorite();
         });
       }
     });

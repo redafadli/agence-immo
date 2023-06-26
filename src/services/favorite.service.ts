@@ -20,23 +20,29 @@ export class FavoriteService {
         const url = `${this.apiUrl}/favorite/user_email/${user_email}`;
         return this.http.get<Favorite[]>(url)
             .pipe(
-                tap(_ => console.log("Favorites of",user_email, "Loaded")),
+                tap(_ => console.log("Favorites of", user_email, "Loaded")),
                 catchError(this.handleError<Favorite[]>('getFavorites', []))
             )
     }
 
-    public postFavorite(favorite: Favorite): Observable<any> {
+    public postFavorite(favorite: Favorite): Observable<Favorite> {
         const url = `${this.apiUrl}/favorite`;
-        return this.http.post(url, favorite, this.httpOptions).pipe(
-          map(response => {
-            // You can perform any necessary transformations on the response data here
-            // For example, if the response contains the added favorite object, you can extract and return it
-            return response;
-          })
+        return this.http.post<Favorite>(url, favorite, this.httpOptions).pipe(
+            map(response => {
+                return response;
+            })
         );
-      }
+    }
 
-        /**
+    public deleteFavorite(favorite_id: number): Observable<any> {
+        const url = `${this.apiUrl}/favorite/delete/${favorite_id}`;
+        return this.http.delete(url, this.httpOptions).pipe(
+            tap(_ => console.log("Favorite with id =", favorite_id, "Deleted")),
+            catchError(this.handleError<Favorite>('delete favorite failed'))
+        );
+    }
+
+    /**
     * Handle Http operation that failed.
     * Let the app continue.
     *
