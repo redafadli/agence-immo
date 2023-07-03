@@ -2,10 +2,12 @@
     <div class="listing" *ngIf="listing">
         <h1 class="name"> {{listing.name}}</h1>
         <img class="image" [src]="listing.image">
-        <mat-icon class="favorite-outline-icon" (click)="addOrDeleteFavorite()">
-            {{ isFavorite ? 'favorite' : 'favorite_border' }}
-          </mat-icon>
-          
+        <div class="favorite-container">
+            <mat-icon class="favorite-outline-icon" (click)="addOrDeleteFavorite()">
+                {{ isFavorite ? 'favorite' : 'favorite_border' }}
+            </mat-icon>
+            <p class="listing-id">Référence du bien : {{listing.id}}</p>
+        </div>
         <div class="price-city">
             <h3 class="price">100.000€</h3>
             <h3 class="city">{{listing.city}}</h3>

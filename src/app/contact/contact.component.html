@@ -1,3 +1,14 @@
+<div *ngIf="authenticationService.isAuthenticated()| async">
+    <h2>Prenez un rendez vous</h2>
+    <div class="appointment-container">
+        <input type="datetime-local" [(ngModel)]="selectedDatetime">
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>La référence du bien concerné</mat-label>
+            <input matInput placeholder="Ex: 200">
+        </mat-form-field>
+        <button mat-button class="rdv-button">Réserver le rendez vous</button>
+    </div>
+</div>
 <h2>Contactez nous</h2>
 <div class="container">
     <span class="contact-span">Pour des conseils ou une estimation gratuite, contactez nous</span>
@@ -16,7 +27,7 @@
             <span>+324 75 22 35 53</span>
         </button>
     </div>
-        <h3 class="mail-span">Contactez nous par email</h3>
-        <app-contact-form></app-contact-form>
+    <h3 class="mail-span">Contactez nous par email</h3>
+    <app-contact-form></app-contact-form>
 </div>
 <app-footer></app-footer>

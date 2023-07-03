@@ -145,3 +145,15 @@ h1 {
 .favorite-outline-icon {
     color: var(--dark-color);
 }
+
+.listing-id {
+    color: gray;
+    margin-bottom: 0;
+    margin-left: 7px;
+    margin-top: 3px;
+}
+
+.favorite-container {
+    display: flex;
+    flex-direction: row;
+}

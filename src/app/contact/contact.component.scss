@@ -82,9 +82,22 @@ h2 {
     font-size: 15px;
 }
 
-
 .phone mat-icon,
 .location mat-icon {
     margin-top: 10px;
     font-size: 26px;
+}
+
+.appointment-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.rdv-button {
+    background-color: var(--main-color);
+    color: white !important;
+    width: 50%;
+    padding-left: auto;
+    padding-right: auto;
+    height: 40px;
 }
