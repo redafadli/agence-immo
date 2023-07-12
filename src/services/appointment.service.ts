@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, catchError, of, tap } from "rxjs";
+import { Observable, catchError, map, of, tap } from "rxjs";
 import { Appointment } from "src/app/appointment";
 
 @Injectable({
     providedIn: 'root',
 })
-export class AuthenticationAppointment {
+export class AppointmentService {
 
     private apiUrl = "https://localhost:7102";
 
@@ -27,10 +27,13 @@ export class AuthenticationAppointment {
     }
 
     // POST one appointment to the http server
-    public postAppointment(appointment: Appointment) {
+    public postAppointment(appointment: Appointment): Observable<Appointment> {
         const url = `${this.apiUrl}/Appointment`;
-        return this.http.post(url, appointment, this.httpOptions)
-            .subscribe()
+        return this.http.post<Appointment>(url, appointment, this.httpOptions).pipe(
+            map(response => {
+                return response;
+            })
+        );
     }
 
 

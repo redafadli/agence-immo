@@ -1,12 +1,12 @@
 <div *ngIf="authenticationService.isAuthenticated()| async">
     <h2>Prenez un rendez vous</h2>
     <div class="appointment-container">
-        <input type="datetime-local" [(ngModel)]="selectedDatetime">
+        <input [min]="getMinDateTime()" type="datetime-local" [(ngModel)]="selectedDatetime">
         <mat-form-field class="form-item" appearance="fill">
             <mat-label>La référence du bien concerné</mat-label>
-            <input matInput placeholder="Ex: 200">
+            <input [(ngModel)]="listingId" matInput placeholder="Ex: 200">
         </mat-form-field>
-        <button mat-button class="rdv-button">Réserver le rendez vous</button>
+        <button mat-button (click)="addAppointment()" class="rdv-button">Réserver le rendez vous</button>
     </div>
 </div>
 <h2>Contactez nous</h2>

@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
+import { AppointmentService } from 'src/services/appointment.service';
 import { AuthenticationService } from 'src/services/authentication.service';
+import { Appointment } from '../appointment';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-contact',
@@ -10,16 +13,54 @@ import { AuthenticationService } from 'src/services/authentication.service';
 })
 export class ContactComponent {
 
-  selectedDate!: Date; // Property to store the selected date
   selectedDatetime!: Date;
+  listingId!: number;
+
 
   constructor(
-    private router : Router,
-    public authenticationService: AuthenticationService)
-  {}
+    private router: Router,
+    public authenticationService: AuthenticationService,
+    public appointmentsService: AppointmentService,
+    public authService: AuthService) { }
 
-  goToMaps(){
+  goToMaps() {
     //need to go to maps
     this.router.navigate(['/listings']);
+  }
+
+  getMinDateTime(): string {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = ('0' + (now.getMonth() + 1)).slice(-2);
+    const day = ('0' + now.getDate()).slice(-2);
+
+    return `${year}-${month}-${day}T00:00`;
+  }
+
+  public addAppointment(): void {
+    let appointment: Appointment = {
+      id: 0,
+      appointment_date_time: this.selectedDatetime,
+      user_email: this.authenticationService.currentUserName,
+      listing_id: this.listingId
+    };
+    const appointmentDateTime = appointment.appointment_date_time;
+    console.log(appointmentDateTime)
+
+    // Check if the appointment already exists based on the appointment_date_time
+    this.appointmentsService.getAppointments().subscribe(appointments => {
+      const existingAppointment = appointments.find(app => app.appointment_date_time === appointmentDateTime);
+
+      if (existingAppointment) {
+        // The appointment already exists, delete it
+        console.log("the appointment is not available")
+      } else {
+        // The appointment doesn't exist, add it
+        this.appointmentsService.postAppointment(appointment).subscribe(() => {
+          console.log('Appointment added successfully.');
+          // Handle any additional logic after adding the appointment
+        });
+      }
+    });
   }
 }
