@@ -42,14 +42,14 @@ export class ListingService {
     }
 
     // PUT edit listing
-    updateListing(listing: Listing): Observable<Listing> {
+    public updateListing(listing: Listing): Observable<Listing> {
         return this.http.put<Listing>(this.apiUrl, listing, this.httpOptions).pipe(
             tap(_ => console.log(`Updated listing id=${listing.id}`)),
             catchError(this.handleError<any>('UpdateListing'))
         );
     }
 
-    deleteListing(id: Number): Observable<Listing> {
+    public deleteListing(id: Number): Observable<Listing> {
         const url = `${this.apiUrl}/listing/${id}`
         return this.http.delete<Listing>(url, this.httpOptions).pipe(
             tap(_ => console.log(`Deleted listing id=${id}`)),
