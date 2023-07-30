@@ -4,7 +4,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { AppointmentService } from 'src/services/appointment.service';
 import { AuthenticationService } from 'src/services/authentication.service';
 import { Appointment } from '../appointment';
-import { delay } from 'rxjs';
+import { EmailService } from 'src/services/email.service';
 
 @Component({
   selector: 'app-contact',
@@ -16,12 +16,12 @@ export class ContactComponent {
   selectedDatetime!: Date;
   listingId!: number;
 
-
   constructor(
     private router: Router,
     public authenticationService: AuthenticationService,
     public appointmentsService: AppointmentService,
-    public authService: AuthService) { }
+    public authService: AuthService,
+    private emailService: EmailService) { }
 
   goToMaps() {
     //need to go to maps
@@ -44,21 +44,24 @@ export class ContactComponent {
       user_email: this.authenticationService.currentUserName,
       listing_id: this.listingId
     };
-    const appointmentDateTime = appointment.appointment_date_time;
-    console.log(appointmentDateTime)
-
+  
+    const appointmentDateTime = new Date(appointment.appointment_date_time);
+  
     // Check if the appointment already exists based on the appointment_date_time
     this.appointmentsService.getAppointments().subscribe(appointments => {
-      const existingAppointment = appointments.find(app => app.appointment_date_time === appointmentDateTime);
-
+      const existingAppointment = appointments.find(app => {
+        const existingDateTime = new Date(app.appointment_date_time);
+        return existingDateTime.getTime() === appointmentDateTime.getTime();
+      });
+  
       if (existingAppointment) {
-        // The appointment already exists, delete it
-        console.log("the appointment is not available")
+        // The appointment already exists, handle accordingly (e.g., show an error message)
+        console.log("The appointment is not available");
       } else {
         // The appointment doesn't exist, add it
         this.appointmentsService.postAppointment(appointment).subscribe(() => {
           console.log('Appointment added successfully.');
-          // Handle any additional logic after adding the appointment
+          // this.emailService.sendConfirmationEmail(this.authenticationService.currentUserName);
         });
       }
     });
