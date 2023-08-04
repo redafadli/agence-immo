@@ -1,4 +1,4 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, ElementRef, HostListener, Inject, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ListingService } from 'src/services/listing.service';
 import { Listing } from '../listing';
@@ -6,7 +6,12 @@ import { AuthenticationService } from 'src/services/authentication.service';
 import { FavoriteService } from 'src/services/favorite.service';
 import { Favorite } from '../favorite';
 import { AuthService } from '@auth0/auth0-angular';
-import { delay } from 'rxjs';
+import { Observable, delay, map } from 'rxjs';
+import { environment } from 'src/environment';
+import { } from 'googlemaps';
+import { HttpClient } from '@angular/common/http';
+
+declare var google: any;
 
 @Component({
   selector: 'app-listing-page',
@@ -17,7 +22,7 @@ export class ListingPageComponent {
 
   public currentUsername: string | undefined;
   public isFavorite: boolean = false;
-  private favorites: Favorite[] = [];
+  googleApiUrl = environment.googleApiKey;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,15 +30,86 @@ export class ListingPageComponent {
     private favoriteService: FavoriteService,
     private authService: AuthService,
     public authenticationService: AuthenticationService,
-  ) { }
+    public httpClient: HttpClient,
+  ) {}
 
-  @Input() listing?: Listing;
+  @Input() listing!: Listing;
+  @ViewChild('map') mapElement: any;
+  map!: google.maps.Map;
 
   ngOnInit(): void {
     this.getListing();
     this.checkIfFavorite();
+    window.onload = () => {
+      this.loadMap();
+    };
   }
 
+  ngAfterViewInit(): void {
+    // Load google maps script after view init
+    const DSLScript = document.createElement('script');
+    DSLScript.src = `https://maps.googleapis.com/maps/api/js?key=${this.googleApiUrl}`;
+    DSLScript.type = 'text/javascript';
+    document.body.appendChild(DSLScript);
+    document.body.removeChild(DSLScript);
+  }
+
+  geocodeAddress(address: string): Observable<{ latitude: number, longitude: number }> {
+    const geocodeApiUrl = `https://maps.googleapis.com/maps/api/geocode/json`;
+    const apiKey = this.googleApiUrl; // Replace with your Google Maps API key
+
+    const params = {
+      address: address,
+      key: apiKey,
+    };
+
+    return this.httpClient.get<any>(geocodeApiUrl, { params: params })
+      .pipe(map(response => {
+        if (response.status === 'OK' && response.results.length > 0) {
+          const location = response.results[0].geometry.location;
+          const latitude = location.lat;
+          const longitude = location.lng;
+          return { latitude, longitude };
+        } else {
+          throw new Error('Geocoding request failed or no results found.');
+        }
+      }));
+  }
+  
+  loadMap() {
+    const defaultLatLng = new google.maps.LatLng(-34.9290, 138.6010);
+    const address = this.listing?.address;
+  
+    this.geocodeAddress(address).subscribe(
+      coordinates => {
+        const latLng = new google.maps.LatLng(coordinates.latitude, coordinates.longitude);
+        let mapOptions = {
+          center: latLng,
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+  
+        // Add a marker to the map
+        const marker = new google.maps.Marker({
+          position: latLng,
+          map: this.map,
+          title: 'Location'
+        });
+      },
+      error => {
+        console.error('Error occurred during geocoding:', error);
+        // Use default coordinates when geocoding fails
+        let mapOptions = {
+          center: defaultLatLng,
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+      }
+    );
+  }
+  
   getListing(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.listingService.getListingById(id)
@@ -79,10 +155,10 @@ export class ListingPageComponent {
       if (existingFavorite) {
         // The favorite already exists, handle accordingly (e.g., show an error message)
         this.favoriteService.deleteFavorite(existingFavorite.id)
-          .subscribe(() =>{
+          .subscribe(() => {
             console.log('delete favorite')
             this.checkIfFavorite();
-          }) 
+          })
       } else {
         // The favorite doesn't exist, add it
         const newFavorite: Favorite = {

@@ -28,13 +28,14 @@
         <p>Interessé par ce bien ? N'hesitez pas à nous contacter</p>
         <button mat-button (click)="scrollToContactForm()">Formulaire</button>
     </div>
-    <div class="description-container">
+    <div *ngIf="listing" class="description-container">
         <h1 id="description-title" class="title">Description</h1>
-        <p class="description">{{listing?.description}}</p>
+        <p class="description">{{listing.description}}</p>
     </div>
-    <div class="address-container">
+    <div *ngIf="listing" class="address-container">
         <h1 class="title">Adresse</h1>
-        <p class="address">{{listing?.address}}</p>
+        <p class="address">{{listing.address}}</p>
+        <div #map style="width:100%;height:400px"></div>
     </div>
     <div class="characs-container">
         <h1 class="title">Caractéristiques</h1>
