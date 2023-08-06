@@ -22,7 +22,7 @@
   </mat-form-field>
   <div class="image-form" appearance="fill"> 
     <mat-label class="images-form">Images</mat-label>
-    <input type="file" id="listing-image">
+    `<input type="file" ng2FileSelect [uploader]="uploader" multiple  />`
   </div>
   <button class="submit-button" mat-button (click)="addProduct()" >Save</button>
   <button class="cancel-button" mat-button>Cancel</button>
