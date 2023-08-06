@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { Listing } from '../listing';
 import { ListingService } from 'src/services/listing.service';
 import { Cloudinary } from '@cloudinary/url-gen';
-import { FileUploader, FileUploaderOptions, ParsedResponseHeaders } from 'ng2-file-upload';
 
 @Component({
   selector: 'app-add-listing',
@@ -15,13 +14,6 @@ export class AddListingComponent {
   public city!: string;
   public description!: string;
   public address!: string;
-
-  @Input()
-  responses: Array<any>;
-
-  private hasBaseDropZoneOver: boolean = false;
-  private uploader: FileUploader;
-  private title: string;
   
   constructor(private listingService: ListingService) {}
 
