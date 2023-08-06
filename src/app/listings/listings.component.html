@@ -1,4 +1,16 @@
 <main class="container">
+    <div>
+        <label for="cityDropdown">Ville :</label>
+        <select id="cityDropdown" [(ngModel)]="citySearchTerm" (change)="onSearchByCity()">
+          <option value="">Toute la belgique</option>
+          <option *ngFor="let city of belgiumCities" [value]="city">{{ city }}</option>
+        </select>
+      </div>
+      <br>
+      <div>
+        <label for="searchInput">Search :</label>
+        <input type="text" [(ngModel)]="nameSearchTerm" (input)="onSearchByName()" id="searchInput">
+      </div>
     <mat-grid-list class="grid" [cols]="cols" rowHeight="3:2">
         <mat-grid-tile *ngFor="let listing of listings">
             <div class="item-container">

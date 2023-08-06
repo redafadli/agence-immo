@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
+import { environment } from 'src/environment';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,12 @@ export class AppComponent {
   title = 'agence-immo';
   constructor(private authService: AuthService) {}
 
+  googleApiUrl = environment.googleApiKey;
+
   ngOnInit() {
     this.authService.handleRedirectCallback();
+  }
+
+  ngAfterViewInit() {
   }
 }

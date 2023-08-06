@@ -35,7 +35,9 @@
     <div *ngIf="listing" class="address-container">
         <h1 class="title">Adresse</h1>
         <p class="address">{{listing.address}}</p>
-        <div #map style="width:100%;height:400px"></div>
+        <div *ngIf="listing">
+            <div #map style="width:100%;height:400px"></div>
+        </div>
     </div>
     <div class="characs-container">
         <h1 class="title">Caractéristiques</h1>

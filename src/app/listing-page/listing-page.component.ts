@@ -10,6 +10,7 @@ import { Observable, delay, map } from 'rxjs';
 import { environment } from 'src/environment';
 import { } from 'googlemaps';
 import { HttpClient } from '@angular/common/http';
+import { MapsService } from 'src/services/maps.service';
 
 declare var google: any;
 
@@ -31,6 +32,7 @@ export class ListingPageComponent {
     private authService: AuthService,
     public authenticationService: AuthenticationService,
     public httpClient: HttpClient,
+    public mapsService: MapsService,
   ) {}
 
   @Input() listing!: Listing;
@@ -53,34 +55,12 @@ export class ListingPageComponent {
     document.body.appendChild(DSLScript);
     document.body.removeChild(DSLScript);
   }
-
-  geocodeAddress(address: string): Observable<{ latitude: number, longitude: number }> {
-    const geocodeApiUrl = `https://maps.googleapis.com/maps/api/geocode/json`;
-    const apiKey = this.googleApiUrl; // Replace with your Google Maps API key
-
-    const params = {
-      address: address,
-      key: apiKey,
-    };
-
-    return this.httpClient.get<any>(geocodeApiUrl, { params: params })
-      .pipe(map(response => {
-        if (response.status === 'OK' && response.results.length > 0) {
-          const location = response.results[0].geometry.location;
-          const latitude = location.lat;
-          const longitude = location.lng;
-          return { latitude, longitude };
-        } else {
-          throw new Error('Geocoding request failed or no results found.');
-        }
-      }));
-  }
   
   loadMap() {
     const defaultLatLng = new google.maps.LatLng(-34.9290, 138.6010);
     const address = this.listing?.address;
   
-    this.geocodeAddress(address).subscribe(
+    this.mapsService.geocodeAddress(address).subscribe(
       coordinates => {
         const latLng = new google.maps.LatLng(coordinates.latitude, coordinates.longitude);
         let mapOptions = {
@@ -89,7 +69,6 @@ export class ListingPageComponent {
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-  
         // Add a marker to the map
         const marker = new google.maps.Marker({
           position: latLng,
@@ -175,5 +154,4 @@ export class ListingPageComponent {
       }
     });
   }
-
 }
