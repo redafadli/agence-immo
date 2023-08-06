@@ -16,7 +16,6 @@
   padding-bottom: 30px;
 }
 
-
 .image {
   width: 100%;
   height: auto;
@@ -82,6 +81,45 @@
 
 a:link {
   text-decoration: none;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  padding-top: 0px;
+  background-color: var(--background-color);
+  border-radius: 10px;
+}
+
+/* Style the form fields */
+.form-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.form-field mat-label {
+  color: var(--dark-color);
+}
+
+.form-field mat-select,
+.form-field input {
+  width: 100%;
+  border: 1px solid var(--dark-color);
+  border-radius: 5px;
+  padding: 10px;
+  color: var(--dark-color);
+  background-color: var(--background-color);
+}
+
+.form-field mat-select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.form-field mat-option {
+  cursor: pointer;
 }
 
 @media screen and (min-width: 1024px) {

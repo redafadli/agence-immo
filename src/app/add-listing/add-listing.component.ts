@@ -15,7 +15,9 @@ export class AddListingComponent {
   public description!: string;
   public address!: string;
   
-  constructor(private listingService: ListingService) {}
+  constructor(private listingService: ListingService) {
+    const cld = new Cloudinary({cloud: {cloudName: 'dlvlbpl8n'}});
+  }
 
   public cloudinary = new Cloudinary({
     cloud: {

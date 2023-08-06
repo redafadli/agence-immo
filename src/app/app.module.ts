@@ -28,11 +28,13 @@ import { NgChartsModule } from 'ng2-charts';
 import { LogInComponent } from './log-in/log-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatSelectModule} from '@angular/material/select';
-import {AuthModule} from '@auth0/auth0-angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { AuthModule } from '@auth0/auth0-angular';
 import { CommonModule } from '@angular/common';
-import { FavoritesComponent } from './favorites/favorites.component';  
+import { FavoritesComponent } from './favorites/favorites.component';
+import { CloudinaryModule } from '@cloudinary/ng';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -58,6 +60,8 @@ import { FavoritesComponent } from './favorites/favorites.component';
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
+    MatSnackBarModule,
+    CloudinaryModule,
     AuthModule.forRoot({
       domain: 'dev-8mfwog6rw2cpo7w5.us.auth0.com',
       clientId: 'ZC0Er65i82Lqdjk9LlWIaYqFTnjCLo23',

@@ -5,6 +5,7 @@ import { AppointmentService } from 'src/services/appointment.service';
 import { AuthenticationService } from 'src/services/authentication.service';
 import { Appointment } from '../appointment';
 import { EmailService } from 'src/services/email.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-contact',
@@ -21,11 +22,12 @@ export class ContactComponent {
     public authenticationService: AuthenticationService,
     public appointmentsService: AppointmentService,
     public authService: AuthService,
-    private emailService: EmailService) { }
+    private emailService: EmailService,
+    private snackBar: MatSnackBar) { }
 
   goToMaps() {
-    //need to go to maps
-    this.router.navigate(['/listings']);
+    window.open("https://www.google.com/maps/place/High+School+in+Hainaut+-+Technical+Campus/@50.4624181,3.9556901,17z/data=!4m15!1m8!3m7!1s0x47c24fe1b8f764c1:0xc9894a48f899d3ba!2sAv.+Victor+Maistriau+13,+7000+Mons!3b1!8m2!3d50.4637089!4d3.956881!16s%2Fg%2F11cncdkvd_!3m5!1s0x47c24fe1877bfae3:0x456a0e68bdf40ebd!8m2!3d50.4613265!4d3.9579119!16s%2Fg%2F11r92yxk5?entry=ttu"
+    , "_blank");
   }
 
   getMinDateTime(): string {
@@ -53,13 +55,18 @@ export class ContactComponent {
         const existingDateTime = new Date(app.appointment_date_time);
         return existingDateTime.getTime() === appointmentDateTime.getTime();
       });
-  
+
+      if(this.listingId == null) {
+        this.snackBar.open('Please enter a reference number', 'Close');
+      }
       if (existingAppointment) {
         // The appointment already exists, handle accordingly (e.g., show an error message)
+        this.snackBar.open('The appointment is not available.', 'Close');
         console.log("The appointment is not available");
       } else {
         // The appointment doesn't exist, add it
         this.appointmentsService.postAppointment(appointment).subscribe(() => {
+          this.snackBar.open("The appointment is confirmed.", 'Close');
           console.log('Appointment added successfully.');
           // this.emailService.sendConfirmationEmail(this.authenticationService.currentUserName);
         });
