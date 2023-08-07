@@ -39,14 +39,9 @@ h2 {
     flex-direction: column;
     padding: 10px;
     background-color: var(--main-color);
-}
-
-.phone,
-.location {
     width: 40%;
     border-radius: 30px;
     border: none;
-
 }
 
 .phone {
@@ -68,6 +63,7 @@ h2 {
 .phone mat-icon,
 .location mat-icon,
 .phone span,
+.phone a,
 .location span {
     display: block;
     margin: 0 auto;

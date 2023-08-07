@@ -48,12 +48,6 @@ export class ListingPageComponent {
   }
 
   ngAfterViewInit(): void {
-    // Load google maps script after view init
-    const DSLScript = document.createElement('script');
-    DSLScript.src = `https://maps.googleapis.com/maps/api/js?key=${this.googleApiUrl}`;
-    DSLScript.type = 'text/javascript';
-    document.body.appendChild(DSLScript);
-    document.body.removeChild(DSLScript);
   }
   
   loadMap() {

@@ -8,9 +8,4 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class ContactFormComponent {
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-
-  submitMessage() {
-    throw new Error('Method not implemented.');
-  }
-
 }

@@ -1,5 +1,5 @@
 <div id="form-container">
-    <mat-form-field class="form-item" appearance="fill"> 
+    <mat-form-field class="form-item" appearance="fill">
         <mat-label>Prénom</mat-label>
         <input matInput placeholder="Prénom">
     </mat-form-field>
@@ -12,10 +12,10 @@
         <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
         <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
             Entrez une addresse mail valide s'il vous plaît
-          </mat-error>
-          <mat-error *ngIf="emailFormControl.hasError('required')">
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
             L'email est <strong>requis</strong>
-          </mat-error>
+        </mat-error>
     </mat-form-field>
     <mat-form-field class="form-item" appearance="fill">
         <mat-label>Téléphone</mat-label>
@@ -26,5 +26,7 @@
         <mat-label>Votre message</mat-label>
         <textarea matInput></textarea>
     </mat-form-field>
-    <button mat-button (click)="submitMessage()">Submit</button>
+    <a href="mailto:contact@micasa.be">
+        <button mat-button>Submit</button>
+    </a>
 </div>
