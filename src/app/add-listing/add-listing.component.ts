@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Listing } from '../listing';
 import { ListingService } from 'src/services/listing.service';
 import { Cloudinary } from '@cloudinary/url-gen';
+import { ImageService } from 'src/services/image.service';
 
 @Component({
   selector: 'app-add-listing',
@@ -14,19 +15,34 @@ export class AddListingComponent {
   public city!: string;
   public description!: string;
   public address!: string;
-  
-  constructor(private listingService: ListingService) {
-    const cld = new Cloudinary({cloud: {cloudName: 'dlvlbpl8n'}});
+  public image! : string;
+
+  constructor(private listingService: ListingService,
+    private imageService: ImageService) {
+    const cld = new Cloudinary({ cloud: { cloudName: 'dlvlbpl8n' } });
   }
 
-  public cloudinary = new Cloudinary({
-    cloud: {
-      cloudName: 'dlvlbpl8n',
-      apiKey: 'G3aSbl5Pwj07OofpTttmHfBndwU',
-    },
-  });
+  selectedFiles!: FileList;
 
-  public addProduct(){
+  public selectFiles(event: any): void {
+    this.selectedFiles = event.target.files;
+  }
+
+  public uploadFiles() {
+    debugger
+    const reader = new FileReader();
+    for (let i = 0; i < this.selectedFiles.length; i++) {
+      reader.readAsDataURL(this.selectedFiles[i])
+      reader.onload = () => {
+        this.imageService.uploadImage({inputImage: reader.result, imageUri : ''}).subscribe(imageUrl => {
+          this.image = imageUrl.imageUri;
+        });
+      }
+    }
+  }
+
+  public addProduct() {
+    this.uploadFiles()
     let listing : Listing =  {
       id : 0,
       name : this.name, 
@@ -34,7 +50,7 @@ export class AddListingComponent {
       city :  this.city, 
       description : this.description,
       address : this.address,
-      image : "https://source.unsplash.com/450x250/?nature"
+      image : this.image
     };
     this.listingService.postListing(listing);
   }
