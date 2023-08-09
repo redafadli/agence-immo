@@ -35,12 +35,13 @@ import { CommonModule } from '@angular/common';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { CloudinaryModule } from '@cloudinary/ng';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { DeleteListingComponent } from './delete-listing/delete-listing.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent, NavigationBarComponent, ItemsCarouselComponent, FooterComponent, AdminDashboardComponent, ContactComponent, AboutComponent, ListingsComponent, ListingPageComponent, AddListingComponent, EditListingComponent, AnalyticsComponent, LogInComponent, SignUpComponent, ContactFormComponent, FavoritesComponent,
+    HomeComponent, NavigationBarComponent, ItemsCarouselComponent, FooterComponent, AdminDashboardComponent, ContactComponent, AboutComponent, ListingsComponent, ListingPageComponent, AddListingComponent, EditListingComponent, AnalyticsComponent, LogInComponent, SignUpComponent, ContactFormComponent, FavoritesComponent, DeleteListingComponent,
   ],
   imports: [
     BrowserModule,

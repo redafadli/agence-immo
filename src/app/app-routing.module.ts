@@ -13,6 +13,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AuthGuard } from '@auth0/auth0-angular';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { DeleteListingComponent } from './delete-listing/delete-listing.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'analytics', pathMatch: 'full' },
       { path: 'add-listing', component: AddListingComponent },
       { path: 'edit-listing', component: EditListingComponent },
+      { path: 'delete-listing', component: DeleteListingComponent},
       { path: 'analytics', component: AnalyticsComponent }
     ],
     canActivate: [AuthGuard],

@@ -1,0 +1,6 @@
+<h1 class="edit-listing">Edit listing</h1>
+<select class="ids-list" (change)="getSelectedId($event)">
+  <option>Select a listing ID</option>
+  <option *ngFor="let listing of listings" [value]="listing.id">{{ listing.id }}</option>
+</select>
+<button class="delete-button" (click)="deleteListing()">Delete listing</button>

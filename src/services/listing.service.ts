@@ -48,12 +48,9 @@ export class ListingService {
         );
     }
 
-    public deleteListing(id: Number): Observable<Listing> {
-        const url = `${this.apiUrl}/listing/${id}`
-        return this.http.delete<Listing>(url, this.httpOptions).pipe(
-            tap(_ => console.log(`Deleted listing id=${id}`)),
-            catchError(this.handleError<Listing>('deleteHero'))
-        );
+    public deleteListing(id: Number) : Observable<Listing[]> {
+        const url = `${this.apiUrl}/deleteListing/${id}`
+        return this.http.delete<Listing[]>(url, this.httpOptions);
     }
 
     /**

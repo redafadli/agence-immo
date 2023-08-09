@@ -1,7 +1,7 @@
 <main class="container">
     <div class="listing" *ngIf="listing">
         <h1 class="name"> {{listing.name}}</h1>
-        <img class="image" [src]="listing.imageUrls[1]">
+        <img class="image" [src]="listing.imageUrls[0]">
         <div class="favorite-container">
             <mat-icon class="favorite-outline-icon" (click)="addOrDeleteFavorite()">
                 {{ isFavorite ? 'favorite' : 'favorite_border' }}

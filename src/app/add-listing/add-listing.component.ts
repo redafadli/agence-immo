@@ -3,6 +3,8 @@ import { Listing } from '../listing';
 import { ListingService } from 'src/services/listing.service';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { ImageService } from 'src/services/image.service';
+import { delay } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-listing',
@@ -13,14 +15,14 @@ export class AddListingComponent {
   public name!: string;
   public price!: number;
   public city!: string;
+  public state!: string;
   public description!: string;
   public address!: string;
-  public images : string[] = [];
+  public images: string[] = [];
 
   constructor(private listingService: ListingService,
-    private imageService: ImageService) {
-    const cld = new Cloudinary({ cloud: { cloudName: 'dlvlbpl8n' } });
-  }
+    private imageService: ImageService,
+    private snackbar: MatSnackBar) { }
 
   selectedFiles!: FileList;
 
@@ -29,9 +31,10 @@ export class AddListingComponent {
   }
 
   public uploadFiles() {
+    this.snackbar.open('Uploading the listing...', 'close', {duration: 3000});
     for (let i = 0; i < this.selectedFiles.length; i++) {
       const reader = new FileReader();  // Create a new reader for each iteration
-  
+
       reader.onload = () => {
         this.imageService.uploadImage({ inputImage: reader.result, imageUri: '' }).subscribe(imageUrl => {
           this.images.push(imageUrl.imageUri);
@@ -41,19 +44,32 @@ export class AddListingComponent {
     }
   }
 
-  public async addProduct() {
-    await this.uploadFiles();  // Wait for images to be uploaded
+  public addProduct() {
+    this.uploadFiles();
+
+    setTimeout(() => {
+      let listing: Listing = {
+        id: 0,
+        name: this.name,
+        price: this.price,
+        state: this.state,
+        city: this.city,
+        description: this.description,
+        address: this.address,
+        imageUrls: this.images
+      };  
+
+      if (this.images.length > 0) {
+        this.listingService.postListing(listing);
+        this.snackbar.open('Listing got added successfully', 'close')
+      } else {
+        this.snackbar.open('Please add images', 'close', { duration: 500 });
+      }
+    }, 3000);
     
-    let listing: Listing = {
-      id: 0,
-      name: this.name,
-      price: this.price,
-      city: this.city,
-      description: this.description,
-      address: this.address,
-      imageUrls: this.images
-    };
+
     
-    await this.listingService.postListing(listing);  // Wait for listing to be posted
-  }  
+
+
+  }
 }
