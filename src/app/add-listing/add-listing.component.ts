@@ -15,7 +15,7 @@ export class AddListingComponent {
   public city!: string;
   public description!: string;
   public address!: string;
-  public image! : string;
+  public images : string[] = [];
 
   constructor(private listingService: ListingService,
     private imageService: ImageService) {
@@ -29,29 +29,31 @@ export class AddListingComponent {
   }
 
   public uploadFiles() {
-    debugger
-    const reader = new FileReader();
     for (let i = 0; i < this.selectedFiles.length; i++) {
-      reader.readAsDataURL(this.selectedFiles[i])
+      const reader = new FileReader();  // Create a new reader for each iteration
+  
       reader.onload = () => {
-        this.imageService.uploadImage({inputImage: reader.result, imageUri : ''}).subscribe(imageUrl => {
-          this.image = imageUrl.imageUri;
+        this.imageService.uploadImage({ inputImage: reader.result, imageUri: '' }).subscribe(imageUrl => {
+          this.images.push(imageUrl.imageUri);
         });
-      }
+      };
+      reader.readAsDataURL(this.selectedFiles[i]);
     }
   }
 
-  public addProduct() {
-    this.uploadFiles()
-    let listing : Listing =  {
-      id : 0,
-      name : this.name, 
-      price : this.price,
-      city :  this.city, 
-      description : this.description,
-      address : this.address,
-      image : this.image
+  public async addProduct() {
+    await this.uploadFiles();  // Wait for images to be uploaded
+    
+    let listing: Listing = {
+      id: 0,
+      name: this.name,
+      price: this.price,
+      city: this.city,
+      description: this.description,
+      address: this.address,
+      imageUrls: this.images
     };
-    this.listingService.postListing(listing);
-  }
+    
+    await this.listingService.postListing(listing);  // Wait for listing to be posted
+  }  
 }

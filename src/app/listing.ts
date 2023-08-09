@@ -5,5 +5,5 @@ export interface Listing {
     description : string;
     city : string;
     address : string;
-    image: string;
+    imageUrls: string[];
 }

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, catchError, of, tap } from "rxjs";
+import { Observable, catchError, map, of, tap } from "rxjs";
 import { Listing } from "../app/listing";
 
 @Injectable({
@@ -37,8 +37,7 @@ export class ListingService {
     // POST one listing to the http server
     public postListing(listing: Listing){
         const url = `${this.apiUrl}/listing`;
-        return this.http.post(url, listing, this.httpOptions)
-        .subscribe()
+        return this.http.post<Listing>(url, listing, this.httpOptions).subscribe();
     }
 
     // PUT edit listing

@@ -4,7 +4,7 @@
         <mat-grid-tile *ngFor="let listing of listings">
             <div class="item-container">
                 <a class="item" routerLink="/detail/{{listing.id}}">
-                    <img class="image" src="{{listing.image}}">
+                    <img class="image" src="{{listing.imageUrls[0]}}">
                     <div class="infos">
                         <div class="title-background">
                             <span class="title"> {{listing.name}}</span>
