@@ -1,7 +1,13 @@
+<div>
 <ngx-slick-carousel class="carousel"  #slickModal="slick-carousel" [config]="slideConfig">
-    <div ngxSlickItem *ngFor="let image of images">
+    <div ngxSlickItem *ngFor="let listing of listings">
+        <a class="item" routerLink="/detail/{{listing.id}}">
         <button type="button" class="slick-prev">Previous</button>
-        <img alt="img" width="auto" height="400px" [src]="image.img">
+        <img alt="img" width="auto" height="400px" [src]="listing.imageUrls[0]">
+        <p>{{listing.name}}</p>
+        <p>{{listing.city}}</p>
+        </a>
     </div>
     <button type="button" class="slick-next">Next</button>
 </ngx-slick-carousel>
+</div>

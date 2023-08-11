@@ -28,7 +28,7 @@
         <button mat-button (click)="displayContact()">Contactez-nous</button>
         <button mat-button (click)="displayApropos()">À propos</button>
         <div *ngIf="auth.user$ | async as user">
-            <button class="admin-button" mat-menu-item *ngIf="isAdmin(user.name!)" (click)="displayAdminDashboard()">
+            <button mat-button *ngIf="isAdmin(user.name!)" (click)="displayAdminDashboard()">
                 Admin
             </button>
         </div>

@@ -1,45 +1,20 @@
 <div class="analytics">
   <h1>Analytics Dashboard</h1>
 
-  <div class="analytics_filters">
-    <h2>Filters</h2>
-    <!-- Filters go here -->
-  </div>
-  
   <div class="analytics_charts">
     <div class="analytics_chart">
       <h2>Users Analytics</h2>
-      <canvas class="chart" baseChart style="display: block;"
-      [type]="'pie'"
-      [datasets]="pieChartDatasets"
-      [labels]="pieChartLabels"
-      [options]="pieChartOptions"
-      [plugins]="pieChartPlugins"
-      [legend]="pieChartLegend">
-</canvas>
+      <canvas class="chart" baseChart style="display: block;" [type]="'pie'" [datasets]="pieChartDatasets"
+        [labels]="pieChartLabels" [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+      </canvas>
 
     </div>
 
     <div class="analytics_chart">
       <h2>Listings Analytics</h2>
-        <canvas class="chart" baseChart width="500" height="400"
-          [type]="'line'"
-          [data]="lineChartData"
-          [options]="lineChartOptions"
-          [legend]="lineChartLegend">
-        </canvas>
-    </div>
-  </div>
-
-  <div class="analytics_tables">
-    <div class="analytics_table">
-      <h2>User Analytics Table</h2>
-      <!-- User analytics table goes here -->
-    </div>
-
-    <div class="analytics_table">
-      <h2>Product Analytics Table</h2>
-      <!-- Product analytics table goes here -->
+      <canvas class="chart" baseChart width="500" height="400" [type]="'line'" [data]="lineChartData"
+        [options]="lineChartOptions" [legend]="lineChartLegend">
+      </canvas>
     </div>
   </div>
 </div>

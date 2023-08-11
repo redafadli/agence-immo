@@ -24,6 +24,13 @@ export class ListingPageComponent {
   public currentUsername: string | undefined;
   public isFavorite: boolean = false;
   googleApiUrl = environment.googleApiKey;
+  slideConfig = {
+    // infinite: true,
+    autoplay: true,
+    slidesToShow : 1,
+    slidesToScroll : 1,
+    arrows : true,
+  }
 
   constructor(
     private route: ActivatedRoute,

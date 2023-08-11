@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ScrollSnapAutoplay, ScrollSnapLoop, ScrollSnapSlider } from 'scroll-snap-slider'
+import { ListingService } from 'src/services/listing.service';
+import { Listing } from '../listing';
 
 @Component({
   selector: 'app-items-carousel',
@@ -8,33 +10,23 @@ import { ScrollSnapAutoplay, ScrollSnapLoop, ScrollSnapSlider } from 'scroll-sna
 })
 export class ItemsCarouselComponent {
 
+  listings : Listing[] = [];
+
   slideConfig = {
-    infinite: true,
-    // autoplay: true,
     slidesToShow : 3,
     slidesToScroll : 1,
     arrows : true,
-    dots : true,
   }
 
-  images = [
-    {img : "https://mdbootstrap.com/img/Photos/Slides/img%20(23).webp"},
-    {img : "https://mdbootstrap.com/img/Photos/Slides/img%20(13).webp"},
-    {img : "https://mdbootstrap.com/img/Photos/Slides/img%20(3).webp"},
-    {img : "https://mdbootstrap.com/img/Photos/Slides/img%20(9).webp"},
-    {img : "https://mdbootstrap.com/img/Photos/Slides/img%20(9).webp"},
-    {img : "https://mdbootstrap.com/img/Photos/Slides/img%20(9).webp"},
-    {img : "https://mdbootstrap.com/img/Photos/Slides/img%20(9).webp"},
-    {img : "https://mdbootstrap.com/img/Photos/Slides/img%20(9).webp"},
-    {img : "https://mdbootstrap.com/img/Photos/Slides/img%20(9).webp"},
-    {img : "https://mdbootstrap.com/img/Photos/Slides/img%20(9).webp"},
-    {img : "https://mdbootstrap.com/img/Photos/Slides/img%20(9).webp"},
-    {img : "https://mdbootstrap.com/img/Photos/Slides/img%20(9).webp"},
-  ]
-
-  constructor() {}
+  constructor(private listingService: ListingService) {}
 
   ngOnInit() {
+    this.getListings();
   }
 
+  public getListings() : void {
+    this.listingService.getListings().subscribe((listings) => {
+      this.listings = listings;
+    });
+  }
 }

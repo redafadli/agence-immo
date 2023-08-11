@@ -61,8 +61,7 @@
         display: none;
     }
 
-    .mat-mdc-button:not(:disabled),
-    .admin-button:not(:disabled){
+    .mat-mdc-button:not(:disabled){
         color: var(--main-color);
         font-size: 19px;
         margin-left: 20px;
@@ -72,10 +71,8 @@
         border-radius: 20px;
     }
 
-    .mat-mdc-button:hover,
-    .admin-button:hover {
+    .mat-mdc-button:hover{
         background-color: var(--main-color);
         color: var(--background-color);
     }
-
 }

@@ -27,4 +27,5 @@ export class EditListingComponent {
     this.listingService.getListings()
       .subscribe(listings => this.listings = listings);
   }
+  
 }
