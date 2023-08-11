@@ -122,6 +122,17 @@ a:link {
   cursor: pointer;
 }
 
+.buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.buttons button {
+  transition: background-color 0.3s;
+}
+
 @media screen and (min-width: 1024px) {
   .container {
     margin-top: 40px;

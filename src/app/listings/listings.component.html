@@ -1,17 +1,29 @@
 <main class="container">
     <div class="search-container">
         <div class="form-field">
-            <mat-label for="searchInput">Search :</mat-label>
-            <input matInput type="text" [(ngModel)]="nameSearchTerm" (input)="onSearchByName()" id="searchInput">
-        </div>
-        <div class="form-field">
             <mat-label for="cityDropdown">Ville :</mat-label>
             <mat-select id="cityDropdown" [(ngModel)]="citySearchTerm" (selectionChange)="onSearchByCity()">
                 <mat-option value="">Toute la belgique</mat-option>
                 <mat-option *ngFor="let city of belgiumCities" [value]="city">{{ city }}</mat-option>
             </mat-select>
         </div>
+        <br>
+        <div class="form-field">
+            <mat-label for="searchInput">Search :</mat-label>
+            <input matInput type="text" [(ngModel)]="nameSearchTerm" (input)="onSearchByName()" id="searchInput">
+        </div>
+        <div class="buttons">
+            <button mat-raised-button [color]="isForRentSelected ? 'accent' : 'primary'"
+                (click)="toggleStateFilter('À louer')">
+                À louer
+            </button>
+            <button mat-raised-button [color]="isForSaleSelected ? 'accent' : 'primary'"
+                (click)="toggleStateFilter('À vendre')">
+                À vendre
+            </button>
+        </div>
     </div>
+
 
     <mat-grid-list class="grid" [cols]="cols" rowHeight="3:2">
         <mat-grid-tile *ngFor="let listing of listings">

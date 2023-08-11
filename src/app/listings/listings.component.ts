@@ -15,6 +15,8 @@ export class ListingsComponent {
   public citySearchTerm: string = '';
   public nameSearchTerm: string = '';
   public belgiumCities: string[] = belgiumCities;
+  isForRentSelected: boolean = false;
+  isForSaleSelected: boolean = false;
 
   // New variable to store the original list of listings
   private originalListings: Listing[] = [];
@@ -74,6 +76,24 @@ export class ListingsComponent {
       // Filter the original list of listings based on the city search term
       this.listings = this.originalListings.filter((listing) =>
         listing.city.toLowerCase() === selectedCity
+      );
+    }
+  }
+
+  toggleStateFilter(state: string): void {
+    if (state === 'À louer') {
+      this.isForRentSelected = !this.isForRentSelected;
+      this.isForSaleSelected = false;
+    } else if (state === 'À vendre') {
+      this.isForSaleSelected = !this.isForSaleSelected;
+      this.isForRentSelected = false;
+    }
+
+    if (!this.isForRentSelected && !this.isForSaleSelected) {
+      this.getListings();
+    } else {
+      this.listings = this.originalListings.filter(
+        (listing) => listing.state.toLowerCase() === state.toLowerCase()
       );
     }
   }
