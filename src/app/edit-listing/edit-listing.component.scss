@@ -7,6 +7,15 @@
   flex-direction: column;
 }
 
+select {
+  color: var(--dark-color);
+  background-color: var(--background-color);
+  border: 2px solid var(--main-color);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+
+}
 
 #add-listing h1 {
   margin-bottom: 2rem;
@@ -51,11 +60,4 @@ mat-label {
 .cancel-button {
   background-color: var(--secondary-color);
   color: var(--dark-color);
-}
-
-.ids_list {
-  margin-bottom: 10px;
-  height: 25px;
-  border-color: var(--main-color);
-  background-color: unset;
 }
