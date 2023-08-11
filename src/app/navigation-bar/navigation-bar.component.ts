@@ -61,4 +61,8 @@ export class NavigationBarComponent {
   isAdmin(email: string): boolean {
     return /@micasa.be\s*$/.test(email);
   }
+
+  login(): void {
+    this.authenticationService.login();
+  }
 }

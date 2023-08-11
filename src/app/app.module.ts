@@ -25,7 +25,6 @@ import { AddListingComponent } from './add-listing/add-listing.component';
 import { EditListingComponent } from './edit-listing/edit-listing.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { NgChartsModule } from 'ng2-charts';
-import { LogInComponent } from './log-in/log-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -41,7 +40,7 @@ import { DeleteListingComponent } from './delete-listing/delete-listing.componen
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent, NavigationBarComponent, ItemsCarouselComponent, FooterComponent, AdminDashboardComponent, ContactComponent, AboutComponent, ListingsComponent, ListingPageComponent, AddListingComponent, EditListingComponent, AnalyticsComponent, LogInComponent, SignUpComponent, ContactFormComponent, FavoritesComponent, DeleteListingComponent,
+    HomeComponent, NavigationBarComponent, ItemsCarouselComponent, FooterComponent, AdminDashboardComponent, ContactComponent, AboutComponent, ListingsComponent, ListingPageComponent, AddListingComponent, EditListingComponent, AnalyticsComponent, SignUpComponent, ContactFormComponent, FavoritesComponent, DeleteListingComponent,
   ],
   imports: [
     BrowserModule,
