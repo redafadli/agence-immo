@@ -66,10 +66,5 @@ export class AddListingComponent {
         this.snackbar.open('Please add images', 'close', { duration: 500 });
       }
     }, 3000);
-    
-
-    
-
-
   }
 }

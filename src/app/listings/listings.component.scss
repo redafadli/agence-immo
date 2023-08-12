@@ -133,6 +133,18 @@ a:link {
   transition: background-color 0.3s;
 }
 
+.pagination {
+  text-align: center;
+}
+
+.pagination button {
+  color: var(--dark-color);
+}
+
+.pagination button[disabled]{
+  opacity: 0.5;
+}
+
 @media screen and (min-width: 1024px) {
   .container {
     margin-top: 40px;

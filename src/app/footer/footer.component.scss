@@ -1,0 +1,60 @@
+#app-footer {
+    background-color: var(--main-color);
+    color: var(--background-color);
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.project-info,
+.social-media {
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--background-color);
+}
+
+.social-icons {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.social-icons li img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    padding: 5px;
+}
+
+.social-media h3 {
+    margin: 0;
+    color: var(--background-color);
+}
+
+.project-name {
+    font-size: 14px;
+    color: var(--background-color);
+}
+
+@media screen and (min-width: 1024px) {
+    .project-info {
+        margin-left: 30px;
+    }
+
+    .social-media {
+        margin-right: 30px;
+    }
+}

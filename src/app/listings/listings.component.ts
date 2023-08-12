@@ -15,11 +15,14 @@ export class ListingsComponent {
   public citySearchTerm: string = '';
   public nameSearchTerm: string = '';
   public belgiumCities: string[] = belgiumCities;
+  private originalListings: Listing[] = [];
   isForRentSelected: boolean = false;
   isForSaleSelected: boolean = false;
-
-  // New variable to store the original list of listings
-  private originalListings: Listing[] = [];
+  listingsPerPage = 12;
+  currentPage = 1;
+  totalPages!: number;
+  paginatedListings: any[] = [];
+  totalPagesArray: number[] = [];
 
   constructor(
     private listingService: ListingService,
@@ -42,6 +45,22 @@ export class ListingsComponent {
           this.cols = 3;
         }
       });
+      this.totalPages = Math.ceil(this.listings.length / this.listingsPerPage);
+      this.totalPagesArray = Array.from({ length: this.totalPages }, (_, index) => index + 1);
+      this.updatePaginatedListings();
+  }
+
+  updatePaginatedListings(): void {
+    const startIndex = (this.currentPage - 1) * this.listingsPerPage;
+    const endIndex = startIndex + this.listingsPerPage;
+    this.paginatedListings = this.listings.slice(startIndex, endIndex);
+  }
+
+  goToPage(pageNumber: number): void {
+    if (pageNumber >= 1 && pageNumber <= this.totalPages) {
+      this.currentPage = pageNumber;
+      this.updatePaginatedListings();
+    }
   }
 
   getListings(): void {
@@ -49,12 +68,17 @@ export class ListingsComponent {
       this.listings = listings;
       // Save the original list of listings
       this.originalListings = [...listings];
+  
+      // Calculate total pages and setup pagination
+      this.totalPages = Math.ceil(this.listings.length / this.listingsPerPage);
+      this.totalPagesArray = Array.from({ length: this.totalPages }, (_, index) => index + 1);
+      this.updatePaginatedListings();
     });
   }
 
   onSearchByName(): void {
     const searchTerm = this.nameSearchTerm.toLowerCase().trim();
-
+  
     if (searchTerm === '') {
       // Reset the listings to the original list when the search term is empty
       this.listings = [...this.originalListings];
@@ -64,11 +88,17 @@ export class ListingsComponent {
         listing.name.toLowerCase().includes(searchTerm)
       );
     }
+  
+    // Update pagination after filtering
+    this.totalPages = Math.ceil(this.listings.length / this.listingsPerPage);
+    this.currentPage = 1; // Reset to first page
+    this.totalPagesArray = Array.from({ length: this.totalPages }, (_, index) => index + 1);
+    this.updatePaginatedListings();
   }
-
+  
   onSearchByCity(): void {
     const selectedCity = this.citySearchTerm.toLowerCase().trim();
-
+  
     if (selectedCity === '') {
       // Reset the listings to the original list when the city search term is empty
       this.listings = [...this.originalListings];
@@ -78,7 +108,14 @@ export class ListingsComponent {
         listing.city.toLowerCase() === selectedCity
       );
     }
+  
+    // Update pagination after filtering
+    this.totalPages = Math.ceil(this.listings.length / this.listingsPerPage);
+    this.currentPage = 1; // Reset to first page
+    this.totalPagesArray = Array.from({ length: this.totalPages }, (_, index) => index + 1);
+    this.updatePaginatedListings();
   }
+  
 
   toggleStateFilter(state: string): void {
     if (state === 'À louer') {
@@ -88,7 +125,7 @@ export class ListingsComponent {
       this.isForSaleSelected = !this.isForSaleSelected;
       this.isForRentSelected = false;
     }
-
+  
     if (!this.isForRentSelected && !this.isForSaleSelected) {
       this.getListings();
     } else {
@@ -96,5 +133,12 @@ export class ListingsComponent {
         (listing) => listing.state.toLowerCase() === state.toLowerCase()
       );
     }
+  
+    // Update pagination after filtering
+    this.totalPages = Math.ceil(this.listings.length / this.listingsPerPage);
+    this.currentPage = 1; // Reset to first page
+    this.totalPagesArray = Array.from({ length: this.totalPages }, (_, index) => index + 1);
+    this.updatePaginatedListings();
   }
+  
 }

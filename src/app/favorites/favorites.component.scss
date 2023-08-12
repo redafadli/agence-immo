@@ -3,6 +3,7 @@
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
   }
   
   .item {
@@ -82,6 +83,12 @@
   
   a:link {
     text-decoration: none;
+  }
+
+  app-footer {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
   }
   
   @media screen and (min-width: 1024px) {

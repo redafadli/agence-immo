@@ -42,7 +42,8 @@ export class ListingService {
 
     // PUT edit listing
     public updateListing(listing: Listing): Observable<Listing> {
-        return this.http.put<Listing>(this.apiUrl, listing, this.httpOptions).pipe(
+        const url = `${this.apiUrl}/editListing`;
+        return this.http.put<Listing>(url, listing, this.httpOptions).pipe(
             tap(_ => console.log(`Updated listing id=${listing.id}`)),
             catchError(this.handleError<any>('UpdateListing'))
         );

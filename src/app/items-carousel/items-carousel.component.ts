@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ScrollSnapAutoplay, ScrollSnapLoop, ScrollSnapSlider } from 'scroll-snap-slider'
 import { ListingService } from 'src/services/listing.service';
 import { Listing } from '../listing';
 
@@ -26,7 +25,7 @@ export class ItemsCarouselComponent {
 
   public getListings() : void {
     this.listingService.getListings().subscribe((listings) => {
-      this.listings = listings;
+      this.listings = listings.slice(0, 10);
     });
   }
 }

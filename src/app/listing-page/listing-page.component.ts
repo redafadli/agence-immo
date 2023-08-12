@@ -25,11 +25,10 @@ export class ListingPageComponent {
   public isFavorite: boolean = false;
   googleApiUrl = environment.googleApiKey;
   slideConfig = {
-    // infinite: true,
     autoplay: true,
-    slidesToShow : 1,
-    slidesToScroll : 1,
-    arrows : true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
   }
 
   constructor(
@@ -40,7 +39,7 @@ export class ListingPageComponent {
     public authenticationService: AuthenticationService,
     public httpClient: HttpClient,
     public mapsService: MapsService,
-  ) {}
+  ) { }
 
   @Input() listing!: Listing;
   @ViewChild('map') mapElement: any;
@@ -56,11 +55,11 @@ export class ListingPageComponent {
 
   ngAfterViewInit(): void {
   }
-  
+
   loadMap() {
     const defaultLatLng = new google.maps.LatLng(-34.9290, 138.6010);
     const address = this.listing?.address;
-  
+
     this.mapsService.geocodeAddress(address).subscribe(
       coordinates => {
         const latLng = new google.maps.LatLng(coordinates.latitude, coordinates.longitude);
@@ -89,7 +88,7 @@ export class ListingPageComponent {
       }
     );
   }
-  
+
   getListing(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.listingService.getListingById(id)
@@ -128,31 +127,41 @@ export class ListingPageComponent {
     const user_email = this.authenticationService.currentUserName;
     const listing_id = this.listing?.id ?? 0;
 
-    // Check if the favorite already exists
-    this.favoriteService.getFavoritesByEmail(user_email).subscribe(favorites => {
-      const existingFavorite = favorites.find(favorite => favorite.listing_id === listing_id);
+    // Subscribe to the observable and handle the authentication status
+    this.authenticationService.isAuthenticated().subscribe(isAuthenticated => {
+      if (isAuthenticated) {
+        // Check if the favorite already exists
+        this.favoriteService.getFavoritesByEmail(user_email).subscribe(favorites => {
+          const existingFavorite = favorites.find(favorite => favorite.listing_id === listing_id);
 
-      if (existingFavorite) {
-        // The favorite already exists, handle accordingly (e.g., show an error message)
-        this.favoriteService.deleteFavorite(existingFavorite.id)
-          .subscribe(() => {
-            console.log('delete favorite')
-            this.checkIfFavorite();
-          })
-      } else {
-        // The favorite doesn't exist, add it
-        const newFavorite: Favorite = {
-          id: 0,
-          user_email: user_email,
-          listing_id: listing_id
-        };
+          if (existingFavorite) {
+            this.favoriteService.deleteFavorite(existingFavorite.id)
+              .subscribe(() => {
+                console.log('delete favorite');
+                this.checkIfFavorite();
+              });
+          } else {
+            const newFavorite: Favorite = {
+              id: 0,
+              user_email: user_email,
+              listing_id: listing_id
+            };
 
-        this.favoriteService.postFavorite(newFavorite).subscribe(() => {
-          console.log('Favorite added successfully.');
-          delay(2000)
-          this.checkIfFavorite();
+            this.favoriteService.postFavorite(newFavorite).subscribe(() => {
+              console.log('Favorite added successfully.');
+              delay(2000);
+              this.checkIfFavorite();
+            });
+          }
         });
+      } else {
+        // User is not authenticated, trigger login
+        this.login();
       }
     });
+  }
+
+  login(): void {
+    this.authenticationService.login();
   }
 }
