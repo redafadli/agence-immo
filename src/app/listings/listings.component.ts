@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ListingService } from 'src/services/listing.service';
 import { Listing } from '../listing';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -23,6 +23,8 @@ export class ListingsComponent {
   totalPages!: number;
   paginatedListings: any[] = [];
   totalPagesArray: number[] = [];
+  @ViewChild('gridList') gridList!: ElementRef;
+
 
   constructor(
     private listingService: ListingService,
@@ -60,6 +62,11 @@ export class ListingsComponent {
     if (pageNumber >= 1 && pageNumber <= this.totalPages) {
       this.currentPage = pageNumber;
       this.updatePaginatedListings();
+      document.getElementById("gridList")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest"
+      });
     }
   }
 
