@@ -7,4 +7,6 @@ export interface Listing {
     city : string;
     address : string;
     imageUrls: string[];
+    space : number;
+    rooms : number;
 }

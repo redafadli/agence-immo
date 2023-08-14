@@ -124,9 +124,23 @@ h1 {
     margin-bottom: 5px;
 }
 
+.slick-prev,
+.slick-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--main-color);
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1;
+    transition: background-color 0.3s, color 0.3s;
+}
+
 .description-container,
 .address-container,
-.characs-container,
 .form-container {
     margin-top: 20px;
 }

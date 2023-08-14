@@ -19,6 +19,8 @@ export class AddListingComponent {
   public description!: string;
   public address!: string;
   public images: string[] = [];
+  public space!: number;
+  public rooms!: number;
 
   constructor(private listingService: ListingService,
     private imageService: ImageService,
@@ -31,7 +33,7 @@ export class AddListingComponent {
   }
 
   public uploadFiles() {
-    this.snackbar.open('Uploading the listing...', 'close', {duration: 3000});
+    this.snackbar.open('Uploading the listing...', 'close', { duration: 3000 });
     for (let i = 0; i < this.selectedFiles.length; i++) {
       const reader = new FileReader();  // Create a new reader for each iteration
 
@@ -56,8 +58,10 @@ export class AddListingComponent {
         city: this.city,
         description: this.description,
         address: this.address,
-        imageUrls: this.images
-      };  
+        imageUrls: this.images,
+        space: this.space,
+        rooms: this.rooms,
+      };
 
       if (this.images.length > 0) {
         this.listingService.postListing(listing);

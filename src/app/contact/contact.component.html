@@ -1,5 +1,5 @@
-<div *ngIf="authenticationService.isAuthenticated()| async">
-    <h2>Prenez un rendez vous</h2>
+<div *ngIf="authenticationService.isAuthenticated()| async; else userNotAuthenticated">
+    <h2>Prenez un rendez-vous</h2>
     <div class="appointment-container">
         <mat-form-field class="form-item" appearance="fill">
             <mat-label>La référence du bien concerné</mat-label>
@@ -11,6 +11,10 @@
         <button mat-button (click)="addAppointment()" class="rdv-button">Réserver le rendez vous</button>
     </div>
 </div>
+<ng-template #userNotAuthenticated>
+    <h2>Prenez un rendez-vous</h2>
+    <h3>Veuillez vous connecter afin de prendre un rendez-vous</h3>
+</ng-template>
 <h2>Contactez nous</h2>
 <div class="container">
     <span class="contact-span">Pour des conseils ou une estimation gratuite, contactez nous</span>

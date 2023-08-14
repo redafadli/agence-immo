@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ListingService } from 'src/services/listing.service';
 import { Listing } from '../listing';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-items-carousel',
@@ -9,23 +10,45 @@ import { Listing } from '../listing';
 })
 export class ItemsCarouselComponent {
 
-  listings : Listing[] = [];
+  listings: Listing[] = [];
+  slidesToShow: number = 3; // Default value for larger screens
 
-  slideConfig = {
-    slidesToShow : 3,
-    slidesToScroll : 1,
-    arrows : true,
-  }
-
-  constructor(private listingService: ListingService) {}
+  constructor(private listingService: ListingService,
+    private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit() {
     this.getListings();
+    this.breakpointObserver
+      .observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Large])
+      .subscribe((result) => {
+        if (result.breakpoints[Breakpoints.XSmall]) {
+          this.slidesToShow = 1;
+        } 
+        if (result.breakpoints[Breakpoints.Small]) {
+          this.slidesToShow = 2;
+        }
+        if (result.breakpoints[Breakpoints.Large]) {
+          this.slidesToShow = 3;
+        }
+        
+        // Update slideConfig here to use the updated slidesToShow value
+        this.slideConfig = {
+          slidesToShow: this.slidesToShow,
+          slidesToScroll: 1,
+          arrows: true,
+        };
+      });
   }
 
-  public getListings() : void {
+  slideConfig = {
+    slidesToShow: this.slidesToShow,
+    slidesToScroll: 1,
+    arrows: true,
+  };
+
+  public getListings(): void {
     this.listingService.getListings().subscribe((listings) => {
-      this.listings = listings.slice(0, 10);
+      this.listings = listings.slice(-10);
     });
   }
 }

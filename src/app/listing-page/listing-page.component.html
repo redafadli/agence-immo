@@ -20,11 +20,11 @@
     <div class="divs-container">
         <div class="space">
             <mat-icon>home</mat-icon>
-            <span>120m²</span>
+            <span>{{listing.space}} m²</span>
         </div>
         <div class="spec2">
-            <mat-icon>alarm</mat-icon>
-            <span>140</span>
+            <mat-icon>bedroom_child</mat-icon>
+            <span>{{listing.rooms}}</span>
         </div>
 
     </div>
@@ -42,10 +42,6 @@
         <div *ngIf="listing">
             <div #map style="width:100%;height:400px"></div>
         </div>
-    </div>
-    <div class="characs-container">
-        <h1 class="title">Caractéristiques</h1>
-        <p class="characs">Liste de caractéristiques</p>
     </div>
     <div class="form-container">
         <p class="form-title">Voulez-vous visiter ce bien ou avoir plus d'informations ? N'hésitez pas à nous contacter

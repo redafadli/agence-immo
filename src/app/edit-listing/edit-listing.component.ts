@@ -19,7 +19,9 @@ export class EditListingComponent {
   city: '',
   description: '',
   address: '',
-  imageUrls: []
+  imageUrls: [],
+  space:0,
+  rooms:0,
 };
 
   constructor(private listingService: ListingService,

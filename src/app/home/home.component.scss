@@ -9,11 +9,12 @@
     opacity: 0.8;
 }
 
-#title1 {
+#main-title {
+    width: auto;
     margin: unset;
     position: absolute;
     color: white;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 28px;
@@ -36,9 +37,33 @@ span {
     padding: 10px 20px;
     border-radius: 5px;
     margin-right: 10px;
+    margin-top: 10px;
     cursor: pointer;
+    width: 280px;
 }
 
 .cover-button:hover {
     background-color: var(--dark-color);
+}
+
+.carousel-text { 
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'calibri_bold';
+    font-size: 25px;
+    color: var(--main-color);
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 1024px) {
+    #main-title {
+        width: 700px;
+        margin: unset;
+        position: absolute;
+        color: white;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 28px;
+    }
 }

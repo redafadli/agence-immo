@@ -28,6 +28,14 @@
     <mat-label for="listing-address">Address</mat-label>
     <input matInput id="listing-description" [(ngModel)]="address">
   </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label for="listing-space">Space</mat-label>
+    <input matInput id="listing-space" [(ngModel)]="space">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label for="listing-rooms">Rooms</mat-label>
+    <input matInput id="listing-rooms" [(ngModel)]="rooms">
+  </mat-form-field>
   <div class="image-form" appearance="fill"> 
     <mat-label class="images-form">Images</mat-label>
     <input class="images-input" type="file" multiple accept="image/*" (change)="selectFiles($event)" />

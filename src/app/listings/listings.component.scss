@@ -96,7 +96,6 @@ a:link {
 /* Style the form fields */
 .form-field {
   width: 100%;
-  margin-bottom: 15px;
 }
 
 .form-field mat-label {
@@ -126,7 +125,7 @@ a:link {
   display: flex;
   gap: 10px;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .buttons button {
@@ -141,7 +140,7 @@ a:link {
   color: var(--dark-color);
 }
 
-.pagination button[disabled]{
+.pagination button[disabled] {
   opacity: 0.5;
 }
 

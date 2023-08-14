@@ -25,7 +25,7 @@
     </div>
 
 
-    <mat-grid-list class="grid" [cols]="cols" rowHeight="3:2">
+    <mat-grid-list id="gridList" class="grid" [cols]="cols" rowHeight="3:2">
         <mat-grid-tile *ngFor="let listing of paginatedListings">
             <div class="item-container">
                 <a class="item" routerLink="/detail/{{listing.id}}">

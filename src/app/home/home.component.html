@@ -1,10 +1,10 @@
 <div id="image-container">
     <img id="cover" src="../assets/images/cover.jpeg">
-    <h2 id="title1">This is a test</h2>
+    <h2 id="main-title">Une maison, mille émotions, dans toute la Belgique.</h2>
     <span>
-        <button mat-button class="cover-button">Load more</button>
-        <button mat-button class="cover-button">Second button</button>
+        <button mat-button class="cover-button" (click)="goToListings()">Trouvez la maison de vos Rêves</button>
     </span>
 </div>
+<h2 class="carousel-text">Jetez un coup d'oeil sur nos derniers biens</h2>
 <app-items-carousel></app-items-carousel>
 <app-footer></app-footer>
