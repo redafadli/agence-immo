@@ -91,9 +91,9 @@ a:link {
   padding-top: 0px;
   background-color: var(--background-color);
   border-radius: 10px;
+  gap: 10px;
 }
 
-/* Style the form fields */
 .form-field {
   width: 100%;
 }
@@ -142,6 +142,11 @@ a:link {
 
 .pagination button[disabled] {
   opacity: 0.5;
+}
+
+.submit-button {
+  background-color: var(--dark-color);
+  width: 200px;
 }
 
 @media screen and (min-width: 1024px) {

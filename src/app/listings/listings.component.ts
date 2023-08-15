@@ -29,7 +29,7 @@ export class ListingsComponent {
   constructor(
     private listingService: ListingService,
     private breakpointObserver: BreakpointObserver
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getListings();
@@ -47,9 +47,9 @@ export class ListingsComponent {
           this.cols = 3;
         }
       });
-      this.totalPages = Math.ceil(this.listings.length / this.listingsPerPage);
-      this.totalPagesArray = Array.from({ length: this.totalPages }, (_, index) => index + 1);
-      this.updatePaginatedListings();
+    this.totalPages = Math.ceil(this.listings.length / this.listingsPerPage);
+    this.totalPagesArray = Array.from({ length: this.totalPages }, (_, index) => index + 1);
+    this.updatePaginatedListings();
   }
 
   updatePaginatedListings(): void {
@@ -75,7 +75,7 @@ export class ListingsComponent {
       this.listings = listings;
       // Save the original list of listings
       this.originalListings = [...listings];
-  
+
       // Calculate total pages and setup pagination
       this.totalPages = Math.ceil(this.listings.length / this.listingsPerPage);
       this.totalPagesArray = Array.from({ length: this.totalPages }, (_, index) => index + 1);
@@ -83,46 +83,19 @@ export class ListingsComponent {
     });
   }
 
-  onSearchByName(): void {
-    const searchTerm = this.nameSearchTerm.toLowerCase().trim();
-  
-    if (searchTerm === '') {
-      // Reset the listings to the original list when the search term is empty
-      this.listings = [...this.originalListings];
-    } else {
-      // Filter the original list of listings based on the name search term
-      this.listings = this.originalListings.filter((listing) =>
-        listing.name.toLowerCase().includes(searchTerm)
-      );
-    }
-  
-    // Update pagination after filtering
+  onSearchCombined(): void {
+    this.listings = this.originalListings.filter((listing) =>
+      (this.citySearchTerm === '' || listing.city.toLowerCase() === this.citySearchTerm.toLowerCase()) &&
+      (this.nameSearchTerm === '' || listing.name.toLowerCase().includes(this.nameSearchTerm.toLowerCase())) &&
+      (!this.isForRentSelected || listing.state.toLowerCase() === 'à louer') &&
+      (!this.isForSaleSelected || listing.state.toLowerCase() === 'à vendre')
+    );
+
     this.totalPages = Math.ceil(this.listings.length / this.listingsPerPage);
-    this.currentPage = 1; // Reset to first page
+    this.currentPage = 1;
     this.totalPagesArray = Array.from({ length: this.totalPages }, (_, index) => index + 1);
     this.updatePaginatedListings();
   }
-  
-  onSearchByCity(): void {
-    const selectedCity = this.citySearchTerm.toLowerCase().trim();
-  
-    if (selectedCity === '') {
-      // Reset the listings to the original list when the city search term is empty
-      this.listings = [...this.originalListings];
-    } else {
-      // Filter the original list of listings based on the city search term
-      this.listings = this.originalListings.filter((listing) =>
-        listing.city.toLowerCase() === selectedCity
-      );
-    }
-  
-    // Update pagination after filtering
-    this.totalPages = Math.ceil(this.listings.length / this.listingsPerPage);
-    this.currentPage = 1; // Reset to first page
-    this.totalPagesArray = Array.from({ length: this.totalPages }, (_, index) => index + 1);
-    this.updatePaginatedListings();
-  }
-  
 
   toggleStateFilter(state: string): void {
     if (state === 'À louer') {
@@ -132,20 +105,7 @@ export class ListingsComponent {
       this.isForSaleSelected = !this.isForSaleSelected;
       this.isForRentSelected = false;
     }
-  
-    if (!this.isForRentSelected && !this.isForSaleSelected) {
-      this.getListings();
-    } else {
-      this.listings = this.originalListings.filter(
-        (listing) => listing.state.toLowerCase() === state.toLowerCase()
-      );
-    }
-  
-    // Update pagination after filtering
-    this.totalPages = Math.ceil(this.listings.length / this.listingsPerPage);
-    this.currentPage = 1; // Reset to first page
-    this.totalPagesArray = Array.from({ length: this.totalPages }, (_, index) => index + 1);
-    this.updatePaginatedListings();
+
+    this.onSearchCombined();
   }
-  
 }
