@@ -1,15 +1,15 @@
 <div class="dashboard_page" class="add-listing">
-  <h1>Add listing</h1>
+  <h1>Ajouter un bien</h1>
   <mat-form-field appearance="fill">
-    <mat-label for="Listing-name">Name</mat-label>
+    <mat-label for="Listing-name">Nom</mat-label>
     <input matInput id="listing-name" [(ngModel)]="name">
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label for="listing-price">Price</mat-label>
+    <mat-label for="listing-price">Prix</mat-label>
     <input matInput type="number" [(ngModel)]="price">
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label for="listing-state">State</mat-label>
+    <mat-label for="listing-state">Type</mat-label>
     <mat-select [(ngModel)]="state" name="listing-state">
       <mat-option value="À vendre">À vendre</mat-option>
       <mat-option value="À louer">À louer</mat-option>
@@ -17,7 +17,7 @@
   </mat-form-field>
   
   <mat-form-field appearance="fill">
-    <mat-label for="listing-city">City</mat-label>
+    <mat-label for="listing-city">Ville</mat-label>
     <input matInput id="listing-city" [(ngModel)]="city">
   </mat-form-field>
   <mat-form-field appearance="fill">
@@ -25,21 +25,21 @@
     <textarea matInput id="listing-description" [(ngModel)]="description"></textarea>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label for="listing-address">Address</mat-label>
+    <mat-label for="listing-address">Adresse</mat-label>
     <input matInput id="listing-description" [(ngModel)]="address">
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label for="listing-space">Space</mat-label>
+    <mat-label for="listing-space">Espace</mat-label>
     <input matInput id="listing-space" [(ngModel)]="space">
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label for="listing-rooms">Rooms</mat-label>
+    <mat-label for="listing-rooms">Chambres</mat-label>
     <input matInput id="listing-rooms" [(ngModel)]="rooms">
   </mat-form-field>
   <div class="image-form" appearance="fill"> 
-    <mat-label class="images-form">Images</mat-label>
+    <mat-label class="images-form">Images </mat-label>
     <input class="images-input" type="file" multiple accept="image/*" (change)="selectFiles($event)" />
   </div>
-  <button class="submit-button" mat-button (click)="addProduct()" >Save</button>
-  <button class="cancel-button" mat-button>Cancel</button>
+  <button class="submit-button" mat-button (click)="addProduct()">Ajouter</button>
+  <button class="cancel-button" mat-button>Annuler</button>
 </div>

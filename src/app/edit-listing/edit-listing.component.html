@@ -1,7 +1,7 @@
 <div class="dashboard_page">
-  <h1>Edit listing</h1>
+  <h1>Modifier un bien</h1>
   <select class="ids_list" (change)="onIdSelect($event)">
-    <option>Select a listing ID</option>
+    <option>Séléctionner un ID</option>
     <option *ngFor="let listing of listings" [value]="listing.id">{{ listing.id }}</option>
   </select>
 
@@ -49,7 +49,7 @@
       <label for="listing-image">Images</label>
       <input type="file" id="listing-image" name="listing-image">
     </form>
-    <button class="submit-button" mat-button (click)="editListing()">Save</button>
-    <button class="cancel-button" mat-button>Cancel</button>
+    <button class="submit-button" mat-button (click)="editListing()">Sauvegarder</button>
+    <button class="cancel-button" mat-button>Annuler</button>
   </div>
 </div>
