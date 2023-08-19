@@ -3,7 +3,7 @@
     <mat-grid-list class="grid" [cols]="cols" rowHeight="3:2">
         <mat-grid-tile *ngFor="let listing of listings">
             <div class="item-container">
-                <a class="item" routerLink="/detail/{{listing.id}}">
+                <a target="_blank" class="item" routerLink="/detail/{{listing.id}}">
                     <img class="image" src="{{listing.imageUrls[0]}}">
                     <div class="infos">
                         <div class="title-background">

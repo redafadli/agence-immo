@@ -5,6 +5,7 @@ import { Cloudinary } from '@cloudinary/url-gen';
 import { ImageService } from 'src/services/image.service';
 import { delay } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-listing',
@@ -24,7 +25,8 @@ export class AddListingComponent {
 
   constructor(private listingService: ListingService,
     private imageService: ImageService,
-    private snackbar: MatSnackBar) { }
+    private snackbar: MatSnackBar,
+    private router : Router) { }
 
   selectedFiles!: FileList;
 
@@ -66,9 +68,10 @@ export class AddListingComponent {
       if (this.images.length > 0) {
         this.listingService.postListing(listing);
         this.snackbar.open('Listing got added successfully', 'close')
+        this.router.navigate(['/listings']);
       } else {
         this.snackbar.open('Please add images', 'close', { duration: 500 });
       }
-    }, 3000);
+    }, 4000);
   }
 }

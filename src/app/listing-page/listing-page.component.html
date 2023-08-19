@@ -3,7 +3,7 @@
         <h1 class="name"> {{listing.name}}</h1>
         <ngx-slick-carousel class="carousel"  #slickModal="slick-carousel" [config]="slideConfig">
             <div ngxSlickItem *ngFor="let image of listing.imageUrls">
-                <img alt="img" width="100%" height="300px" [src]="image">
+                <img class="image" alt="img" [src]="image">
             </div>
         </ngx-slick-carousel>
         <div class="favorite-container">
@@ -13,7 +13,7 @@
             <p class="listing-id">Référence du bien : {{listing.id}}</p>
         </div>
         <div class="price-city">
-            <h3 class="price">100.000€</h3>
+            <h3 class="price">{{ listing.price | number:'1.0-0' }}€</h3>
             <h3 class="city">{{listing.city}}</h3>
         </div>
     </div>
@@ -40,7 +40,7 @@
         <h1 class="title">Adresse</h1>
         <p class="address">{{listing.address}}</p>
         <div *ngIf="listing">
-            <div #map style="width:100%;height:400px"></div>
+            <div class="map" #map></div>
         </div>
     </div>
     <div class="form-container">

@@ -17,8 +17,9 @@
 }
 
 .image {
-  width: 100%;
-  height: auto;
+  width: 360px;
+  height: 140px;
+  object-fit: cover;
   border-radius: 40px 0px 0 0;
 }
 
@@ -39,6 +40,11 @@
   top: -25px;
   left: 20px;
   color: white;
+  text-shadow:
+  -1px -1px 0 var(--main-color),
+  1px -1px 0 var(--main-color),
+  -1px 1px 0 var(--main-color),
+  1px 1px 0 var(--main-color);
 }
 
 .state {
@@ -153,4 +159,10 @@ a:link {
   .container {
     margin-top: 40px;
   }
+
+  .image {
+    width: 340px;
+    height: 139px;
+  }
+
 }

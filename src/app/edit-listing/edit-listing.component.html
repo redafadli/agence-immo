@@ -22,10 +22,6 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label for="listing-state">State</mat-label>
-      <input matInput id="listing-state" [ngModel]="selectedListing.state" (ngModelChange)="selectedListing.state = $event" name="listing-state">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
       <mat-label for="listing-city">City</mat-label>
       <input matInput id="listing-city" [ngModel]="selectedListing.city" (ngModelChange)="selectedListing.city = $event" name="listing-city">
     </mat-form-field>
@@ -38,11 +34,11 @@
       <input matInput id="listing-address" [ngModel]="selectedListing.address" (ngModelChange)="selectedListing.address = $event" name="listing-address">
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label for="listing-space">Space</mat-label>
+      <mat-label for="listing-space">Espace</mat-label>
       <input matInput id="listing-space" [(ngModel)]="selectedListing.space">
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label for="listing-rooms">Rooms</mat-label>
+      <mat-label for="listing-rooms">Chambre(s)</mat-label>
       <input matInput id="listing-rooms" [(ngModel)]="selectedListing.rooms">
     </mat-form-field>
     <form appearance="fill">

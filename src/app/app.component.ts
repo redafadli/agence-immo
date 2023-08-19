@@ -10,9 +10,7 @@ import { environment } from 'src/environment';
 export class AppComponent {
   title = 'agence-immo';
   constructor(private authService: AuthService) {}
-
-  googleApiUrl = environment.googleApiKey;
-
+  
   ngOnInit() {
     this.authService.handleRedirectCallback();
   }

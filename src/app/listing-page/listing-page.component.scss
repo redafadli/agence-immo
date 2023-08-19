@@ -1,6 +1,6 @@
 .container {
     min-width: inherit;
-    max-width: 85%;
+    max-width: 80%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
@@ -33,7 +33,7 @@ h1 {
     margin-right: auto;
 }
 
-.price-city{
+.price-city {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -172,6 +172,20 @@ h1 {
     flex-direction: row;
 }
 
+.map {
+    width: 100%;
+    height: 400px;
+}
+
+::ng-deep .slick-next:before,
+::ng-deep .slick-prev:before {
+    color : var(--main-color) !important;
+}
+
 @media screen and (min-width:1024px) {
-    
+    .image {
+        width: 100%;
+        height: 400px;
+        object-fit: contain;
+    }
 }

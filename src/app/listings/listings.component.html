@@ -27,7 +27,7 @@
     <mat-grid-list id="gridList" class="grid" [cols]="cols" rowHeight="3:2">
         <mat-grid-tile *ngFor="let listing of paginatedListings">
             <div class="item-container">
-                <a class="item" routerLink="/detail/{{listing.id}}">
+                <a target="_blank" class="item" routerLink="/detail/{{listing.id}}">
                     <img class="image" src="{{listing.imageUrls[0]}}">
                     <div class="infos">
                         <div class="title-background">
@@ -46,9 +46,9 @@
         </mat-grid-tile>
     </mat-grid-list>
     <div class="pagination">
-        <button mat-button [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">Previous</button>
+        <button mat-button [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">Précédent</button>
         <button mat-button *ngFor="let page of totalPagesArray" [disabled]="currentPage === page" (click)="goToPage(page)">{{ page }}</button>
-        <button mat-button [disabled]="currentPage === totalPages" (click)="goToPage(currentPage + 1)">Next</button>
+        <button mat-button [disabled]="currentPage === totalPages" (click)="goToPage(currentPage + 1)">Suivant</button>
     </div>
 </main>
 <app-footer></app-footer>

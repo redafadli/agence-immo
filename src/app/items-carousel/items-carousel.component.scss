@@ -70,3 +70,14 @@
 a {
     text-decoration: none;
 }
+
+::ng-deep .slick-next:before,
+::ng-deep .slick-prev:before {
+    color : var(--main-color) !important;
+}
+
+@media screen and (min-width: 1024px) {
+    .image {
+        height: 250px !important;
+    }
+}

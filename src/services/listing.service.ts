@@ -35,7 +35,7 @@ export class ListingService {
     }
 
     // POST one listing to the http server
-    public postListing(listing: Listing){
+    public postListing(listing: Listing) {
         const url = `${this.apiUrl}/listing`;
         return this.http.post<Listing>(url, listing, this.httpOptions).subscribe();
     }
@@ -49,7 +49,7 @@ export class ListingService {
         );
     }
 
-    public deleteListing(id: Number) : Observable<Listing[]> {
+    public deleteListing(id: Number): Observable<Listing[]> {
         const url = `${this.apiUrl}/deleteListing/${id}`
         return this.http.delete<Listing[]>(url, this.httpOptions);
     }

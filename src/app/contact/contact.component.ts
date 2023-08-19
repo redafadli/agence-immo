@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { AppointmentService } from 'src/services/appointment.service';
 import { AuthenticationService } from 'src/services/authentication.service';
@@ -18,7 +17,6 @@ export class ContactComponent {
   listingId!: number;
 
   constructor(
-    private router: Router,
     public authenticationService: AuthenticationService,
     public appointmentsService: AppointmentService,
     public authService: AuthService,
@@ -49,7 +47,7 @@ export class ContactComponent {
   
     const appointmentDateTime = new Date(appointment.appointment_date_time);
   
-    // Check if the appointment already exists based on the appointment_date_time
+    // Check if the appointment already exists
     this.appointmentsService.getAppointments().subscribe(appointments => {
       const existingAppointment = appointments.find(app => {
         const existingDateTime = new Date(app.appointment_date_time);
@@ -60,7 +58,7 @@ export class ContactComponent {
         this.snackBar.open('Please enter a reference number', 'Close');
       }
       if (existingAppointment) {
-        // The appointment already exists, handle accordingly (e.g., show an error message)
+        // The appointment already exists
         this.snackBar.open('The appointment is not available.', 'Close');
         console.log("The appointment is not available");
       } else {
@@ -68,7 +66,6 @@ export class ContactComponent {
         this.appointmentsService.postAppointment(appointment).subscribe(() => {
           this.snackBar.open("The appointment is confirmed.", 'Close');
           console.log('Appointment added successfully.');
-          // this.emailService.sendConfirmationEmail(this.authenticationService.currentUserName);
         });
       }
     });
