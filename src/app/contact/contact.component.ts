@@ -55,17 +55,15 @@ export class ContactComponent {
       });
 
       if(this.listingId == null) {
-        this.snackBar.open('Please enter a reference number', 'Close');
+        this.snackBar.open('Veuillez entrer un numéro de référence', 'Close');
       }
       if (existingAppointment) {
         // The appointment already exists
-        this.snackBar.open('The appointment is not available.', 'Close');
-        console.log("The appointment is not available");
+        this.snackBar.open("Le rendez-vous n'est pas disponible.", 'Close');
       } else {
         // The appointment doesn't exist, add it
         this.appointmentsService.postAppointment(appointment).subscribe(() => {
-          this.snackBar.open("The appointment is confirmed.", 'Close');
-          console.log('Appointment added successfully.');
+          this.snackBar.open("Le rendez-vous est confirmé.", 'Close');
         });
       }
     });

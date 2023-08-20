@@ -93,8 +93,7 @@ a:link {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  padding-top: 0px;
+  padding-bottom: 20px;
   background-color: var(--background-color);
   border-radius: 10px;
   gap: 10px;
@@ -113,7 +112,7 @@ a:link {
   width: 100%;
   border: 1px solid var(--dark-color);
   border-radius: 5px;
-  padding: 10px;
+  padding: 10px 0 10px 10px;
   color: var(--dark-color);
   background-color: var(--background-color);
 }
@@ -129,6 +128,7 @@ a:link {
 
 .buttons {
   display: flex;
+  flex-direction: column;
   gap: 10px;
   justify-content: center;
   margin-top: 10px;
@@ -136,6 +136,11 @@ a:link {
 
 .buttons button {
   transition: background-color 0.3s;
+}
+
+.state-buttons-container {
+  display: flex;
+  justify-content: space-between;
 }
 
 .pagination {
@@ -152,7 +157,11 @@ a:link {
 
 .submit-button {
   background-color: var(--dark-color);
-  width: 200px;
+  width: 300px;
+}
+
+.state-buttons-container button {
+  width: 45%;
 }
 
 @media screen and (min-width: 1024px) {
@@ -163,6 +172,14 @@ a:link {
   .image {
     width: 340px;
     height: 139px;
+  }
+
+  .buttons {
+    width: 100%;
+  }
+
+  .submit-button {
+    width: 100%;
   }
 
 }

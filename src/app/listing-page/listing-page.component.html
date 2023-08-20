@@ -18,11 +18,11 @@
         </div>
     </div>
     <div class="divs-container">
-        <div class="space">
+        <div *ngIf="listing" class="space">
             <mat-icon>home</mat-icon>
             <span>{{listing.space}} m²</span>
         </div>
-        <div class="spec2">
+        <div *ngIf="listing" class="spec2">
             <mat-icon>bedroom_child</mat-icon>
             <span>{{listing.rooms}}</span>
         </div>

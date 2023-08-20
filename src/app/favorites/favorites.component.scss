@@ -1,108 +1,116 @@
 .container {
-    margin-top: 28px;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-  }
-  
-  .item {
-    display: flex;
-    flex-direction: column;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  
-  .item-container {
-    padding-bottom: 30px;
-  }
-  
-  .image {
-    width: 360px;
-    height: 140px;
-    object-fit: cover;
-    border-radius: 40px 0px 0 0;
-  }
-  
-  .infos {
-    position: relative;
-    border-top: none;
-    border: 1px;
-    border-style: solid;
-    border-bottom-color: var(--main-color);
-    border-left-color: var(--main-color);
-    border-right-color: var(--main-color);
-    border-radius: 0 0 20px 0;
-  }
-  
-  .title {
-    position: absolute;
-    font-size: 20px;
-    top: -25px;
-    left: 20px;
-    color: white;
-    text-shadow:
+  margin-top: 28px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.item-container {
+  padding-bottom: 30px;
+}
+
+.image {
+  width: 360px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 40px 0px 0 0;
+}
+
+.infos {
+  position: relative;
+  border-top: none;
+  border: 1px;
+  border-style: solid;
+  border-bottom-color: var(--main-color);
+  border-left-color: var(--main-color);
+  border-right-color: var(--main-color);
+  border-radius: 0 0 20px 0;
+}
+
+.title {
+  position: absolute;
+  font-size: 20px;
+  top: -25px;
+  left: 20px;
+  color: white;
+  text-shadow:
     -1px -1px 0 var(--main-color),
     1px -1px 0 var(--main-color),
     -1px 1px 0 var(--main-color),
     1px 1px 0 var(--main-color);
-  }
-  
-  .state {
-    display: block;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 5px;
-    font-family: 'calibri_regular';
-    font-size: 18px;
-  }
-  
-  .city {
-    position: absolute;
-    font-size: 18px;
-    right: 0;
-    margin-right: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-  
-  .price-city {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    width: 100%;
-    background-color: var(--main-color);
-    border-radius: 0 0 20px 0;
-  }
-  
-  .state-city {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .price {
-    margin-left: 10px;
-    font-size: 18px;
-    color: var(--background-color);
-  }
-  
-  a:link {
-    text-decoration: none;
+}
+
+.state {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  font-family: 'calibri_regular';
+  font-size: 18px;
+}
+
+.city {
+  position: absolute;
+  font-size: 18px;
+  right: 0;
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.price-city {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 100%;
+  background-color: var(--main-color);
+  border-radius: 0 0 20px 0;
+}
+
+.state-city {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.price {
+  margin-left: 10px;
+  font-size: 18px;
+  color: var(--background-color);
+}
+
+a:link {
+  text-decoration: none;
+}
+
+p {
+  font-family: 'calibri_bold';
+  margin-top: 30px;
+  color: var(--main-color);
+  font-size: 20px;
+  text-align: center;
+}
+
+app-footer {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    margin-top: 40px;
   }
 
-  app-footer {
-    bottom: 0;
-    position: absolute;
-    width: 100%;
+  .image {
+    width: 340px;
+    height: 139px;
   }
-  
-  @media screen and (min-width: 1024px) {
-    .container {
-      margin-top: 40px;
-    }
-
-    .image {
-      width: 340px;
-      height: 139px;
-    }
-  }
+}

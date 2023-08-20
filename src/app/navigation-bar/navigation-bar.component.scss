@@ -33,6 +33,11 @@
     display: none;
 }
 
+.menu-container {
+    display: flex;
+    flex-direction: column;
+}
+
 ::ng-deep .menu-item button {
     height: 20px;
 }

@@ -14,7 +14,18 @@ select {
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
+}
 
+.images-input {
+  background-color: var(--background-color);
+  color: var(--dark-color);
+  border: 2px solid var(--main-color);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#images-label {
+  margin-right: 10px;
 }
 
 #add-listing h1 {

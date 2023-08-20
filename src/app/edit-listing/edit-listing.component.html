@@ -42,8 +42,8 @@
       <input matInput id="listing-rooms" [(ngModel)]="selectedListing.rooms">
     </mat-form-field>
     <form appearance="fill">
-      <label for="listing-image">Images</label>
-      <input type="file" id="listing-image" name="listing-image">
+      <label id="images-label" for="listing-image">Images</label>
+      <input class="images-input" type="file" id="listing-image" name="listing-image">
     </form>
     <button class="submit-button" mat-button (click)="editListing()">Sauvegarder</button>
   </div>

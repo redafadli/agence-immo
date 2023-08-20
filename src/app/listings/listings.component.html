@@ -12,15 +12,20 @@
             <input matInput type="text" [(ngModel)]="nameSearchTerm">
         </div>
         <div class="buttons">
-            <button mat-raised-button [color]="isForRentSelected ? 'accent' : 'primary'"
-                (click)="toggleStateFilter('À louer')">
-                À louer
-            </button>
-            <button mat-raised-button [color]="isForSaleSelected ? 'accent' : 'primary'"
-                (click)="toggleStateFilter('À vendre')">
-                À vendre
-            </button>
-            <button class="submit-button" mat-raised-button color="primary" (click)="onSearchCombined()">Chercher</button>
+            <div class="state-buttons-container">
+                <button mat-raised-button [color]="isForRentSelected ? 'accent' : 'primary'"
+                    (click)="toggleStateFilter('À louer')">
+                    À louer
+                </button>
+                <button mat-raised-button [color]="isForSaleSelected ? 'accent' : 'primary'"
+                    (click)="toggleStateFilter('À vendre')">
+                    À vendre
+                </button>
+            </div>
+            <div class="search-button-container">
+                <button class="submit-button" mat-raised-button color="primary"
+                    (click)="onSearchCombined()">Chercher</button>
+            </div>
         </div>
     </div>
 
@@ -38,7 +43,7 @@
                             <span class="city">{{listing.city}}</span>
                         </div>
                         <div class="price-city">
-                            <span class="price">{{listing.price}} €</span>
+                            <span class="price">{{ listing.price | number:'1.0-0' }}€</span>
                         </div>
                     </div>
                 </a>
@@ -47,7 +52,8 @@
     </mat-grid-list>
     <div class="pagination">
         <button mat-button [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">Précédent</button>
-        <button mat-button *ngFor="let page of totalPagesArray" [disabled]="currentPage === page" (click)="goToPage(page)">{{ page }}</button>
+        <button mat-button *ngFor="let page of totalPagesArray" [disabled]="currentPage === page"
+            (click)="goToPage(page)">{{ page }}</button>
         <button mat-button [disabled]="currentPage === totalPages" (click)="goToPage(currentPage + 1)">Suivant</button>
     </div>
 </main>
