@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { ChartConfiguration, ChartOptions, ChartType } from 'chart.js';
+import { ChartConfiguration, ChartOptions } from 'chart.js';
+import { Listing } from '../listing';
+import { ListingService } from 'src/services/listing.service';
 
 @Component({
   selector: 'app-analytics',
@@ -8,38 +10,55 @@ import { ChartConfiguration, ChartOptions, ChartType } from 'chart.js';
 })
 export class AnalyticsComponent {
 
-  //line
-  public lineChartData: ChartConfiguration<'line'>['data'] = {
-    labels: [
-      'January',
-      'February',
-      'March',
-    ],
-    datasets: [
-      {
-        data: [65, 59, 80],
-        label: 'Series A',
-        fill: true,
-        tension: 0.3,
-        borderColor: 'black',
-        backgroundColor: 'rgba(255,0,0,0.3)'
-      }
-    ]
-  };
+  listings: Listing[] = [];
+  private cities: string[] = [];
+  private counts: number[] = [];
+
+  constructor(private listingService: ListingService) { }
+
   public lineChartOptions: ChartOptions<'line'> = {
     responsive: false
   };
-  public lineChartLegend = true;
 
-  // Pie
-  public pieChartOptions: ChartOptions<'pie'> = {
-    responsive: false,
-  };
-  public pieChartLabels = [['Download Sales'], 'Mail Sales'];
-  public pieChartDatasets = [{
-    data: [400, 100]
-  }];
-  public pieChartLegend = true;
-  public pieChartPlugins = [];
+  ngOnInit() {
+    this.getListings();
+  }
 
+  private getListings(): void {
+    this.listingService.getListings()
+      .subscribe(listings => {
+        this.listings = listings;
+        this.updateChartData();
+      });
+  }
+
+  updateChartData(): void {
+    const cityCounts: { [key: string]: number } = {};
+
+    // Count the occurrences of each city
+    this.listings.forEach((listing) => {
+      const city = listing.city;
+      cityCounts[city] = (cityCounts[city] || 0) + 1;
+    });
+
+    // Extract cities and counts for chart data
+    this.cities = Object.keys(cityCounts);
+    this.counts = Object.values(cityCounts);
+
+    // Set lineChartData after populating cities and counts
+    this.lineChartData = {
+      labels: this.cities,
+      datasets: [
+        {
+          data: this.counts,
+          label: 'Annonces par ville',
+          fill: true,
+          borderColor: 'black',
+          backgroundColor: '#F6E7DF',
+        }
+      ]
+    };
+  }
+
+  public lineChartData!: ChartConfiguration<'line'>['data'];
 }
