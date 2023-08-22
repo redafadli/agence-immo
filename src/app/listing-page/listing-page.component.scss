@@ -19,9 +19,10 @@ h1 {
 }
 
 .name {
+    font-family: 'calibri_bold';
+    font-size: 30px;
     color: var(--main-color);
     text-align: center;
-    font-family: 'calibri_bold';
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: white;
 }
@@ -180,7 +181,7 @@ h1 {
 
 ::ng-deep .slick-next:before,
 ::ng-deep .slick-prev:before {
-    color : var(--main-color) !important;
+    color: var(--main-color) !important;
 }
 
 @media screen and (min-width:1024px) {
@@ -188,5 +189,16 @@ h1 {
         width: 100%;
         height: 400px;
         object-fit: contain;
+    }
+
+    .space span,
+    .spec2 span {
+        font-size: 17px;
+    }
+
+    .contact button,
+    .contact p,
+    .form-title {
+        font-size: 17px;
     }
 }

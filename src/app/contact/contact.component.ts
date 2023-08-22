@@ -3,7 +3,6 @@ import { AuthService } from '@auth0/auth0-angular';
 import { AppointmentService } from 'src/services/appointment.service';
 import { AuthenticationService } from 'src/services/authentication.service';
 import { Appointment } from '../appointment';
-import { EmailService } from 'src/services/email.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -20,7 +19,6 @@ export class ContactComponent {
     public authenticationService: AuthenticationService,
     public appointmentsService: AppointmentService,
     public authService: AuthService,
-    private emailService: EmailService,
     private snackBar: MatSnackBar) { }
 
   goToMaps() {

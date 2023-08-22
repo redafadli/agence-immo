@@ -10,7 +10,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { FooterComponent } from './footer/footer.component';
-// import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
@@ -25,7 +24,6 @@ import { AddListingComponent } from './add-listing/add-listing.component';
 import { EditListingComponent } from './edit-listing/edit-listing.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { NgChartsModule } from 'ng2-charts';
-import { SignUpComponent } from './sign-up/sign-up.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
@@ -40,7 +38,7 @@ import { DeleteListingComponent } from './delete-listing/delete-listing.componen
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent, NavigationBarComponent, ItemsCarouselComponent, FooterComponent, AdminDashboardComponent, ContactComponent, AboutComponent, ListingsComponent, ListingPageComponent, AddListingComponent, EditListingComponent, AnalyticsComponent, SignUpComponent, ContactFormComponent, FavoritesComponent, DeleteListingComponent,
+    HomeComponent, NavigationBarComponent, ItemsCarouselComponent, FooterComponent, AdminDashboardComponent, ContactComponent, AboutComponent, ListingsComponent, ListingPageComponent, AddListingComponent, EditListingComponent, AnalyticsComponent, ContactFormComponent, FavoritesComponent, DeleteListingComponent,
   ],
   imports: [
     BrowserModule,

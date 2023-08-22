@@ -34,7 +34,7 @@ export class AddListingComponent {
     this.selectedFiles = event.target.files;
   }
 
-  public uploadFiles() {
+  public uploadImages() {
     this.snackbar.open("Téléchargement de l'annonce en cours...", 'close', { duration: 3000 });
     for (let i = 0; i < this.selectedFiles.length; i++) {
       const reader = new FileReader();
@@ -48,8 +48,8 @@ export class AddListingComponent {
     }
   }
 
-  public addProduct() {
-    this.uploadFiles();
+  public addListing() {
+    this.uploadImages();
 
     setTimeout(() => {
       let listing: Listing = {

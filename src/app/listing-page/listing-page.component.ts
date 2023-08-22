@@ -53,9 +53,6 @@ export class ListingPageComponent {
     };
   }
 
-  ngAfterViewInit(): void {
-  }
-
   loadMap() {
     const defaultLatLng = new google.maps.LatLng(-34.9290, 138.6010);
     const address = this.listing?.address;
