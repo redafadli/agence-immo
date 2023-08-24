@@ -54,7 +54,7 @@ export class EditListingComponent {
       this.listingService.updateListing(this.selectedListing)
         .subscribe(
           () => {
-            this.snackBar.open('Annonce mise à jour avec succès', 'close', { duration: 500 })
+            this.snackBar.open('Annonce mise à jour avec succès', 'Fermer', { duration: 500 })
           },
           error => {
             console.error("Erreur lors de la mise à jour de l'annonce:", error);

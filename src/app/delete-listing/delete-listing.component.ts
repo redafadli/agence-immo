@@ -34,7 +34,7 @@ export class DeleteListingComponent {
         .subscribe(() => {
           this.getListings();
           this.selectedId = null;
-          this.snackbar.open('Annonce supprimée avec succès', 'close', { duration: 2000 });
+          this.snackbar.open('Annonce supprimée avec succès', 'Fermer', { duration: 2000 });
         });
     }
   }

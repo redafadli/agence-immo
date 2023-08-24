@@ -35,7 +35,7 @@ export class ListingsComponent {
     this.getListings();
 
     this.breakpointObserver
-      .observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium])
+      .observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium, Breakpoints.Large])
       .subscribe((result) => {
         if (result.breakpoints[Breakpoints.XSmall]) {
           this.cols = 1;

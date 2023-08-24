@@ -35,7 +35,7 @@ export class AddListingComponent {
   }
 
   public uploadImages() {
-    this.snackbar.open("Téléchargement de l'annonce en cours...", 'close', { duration: 3000 });
+    this.snackbar.open("Téléchargement de l'annonce en cours...", 'Fermer', { duration: 3000 });
     for (let i = 0; i < this.selectedFiles.length; i++) {
       const reader = new FileReader();
 
@@ -74,10 +74,10 @@ export class AddListingComponent {
         && this.space > 0
         && this.rooms > 0) {
         this.listingService.postListing(listing);
-        this.snackbar.open("L'annonce a été ajoutée avec succès", 'close')
+        this.snackbar.open("L'annonce a été ajoutée avec succès", 'Fermer')
         this.router.navigate(['/listings']);
       } else {
-        this.snackbar.open('Veillez remplir tous les champs', 'close', { duration: 500 });
+        this.snackbar.open('Veuillez remplir tous les champs', 'Fermer', { duration: 500 });
       }
     }, 5000);
   }
